@@ -5,11 +5,36 @@ K {}
 V {}
 S {}
 E {}
-C {sky130_fd_pr/nfet3_03v3_nvt.sym} 110 50 0 0 {name=M1
+N 130 -50 160 -50 {
+lab=BL}
+N 160 -50 160 -0 {
+lab=BL}
+N 40 -50 70 -50 {
+lab=BL_BAR}
+N 40 -50 40 -0 {
+lab=BL_BAR}
+N 80 30 120 30 {
+lab=clk}
+N 100 -10 100 30 {
+lab=clk}
+N 40 60 40 80 {
+lab=Vdd/2}
+N 160 60 160 80 {
+lab=Vdd/2}
+N 40 80 160 80 {
+lab=Vdd/2}
+N 160 -100 160 -50 {
+lab=BL}
+N 40 -100 40 -50 {
+lab=BL_BAR}
+N 40 80 40 110 {
+lab=Vdd/2}
+N 100 30 100 110 {
+lab=clk}
+C {sky130_fd_pr/nfet_01v8.sym} 140 30 0 0 {name=M1
 W=1
-L=0.5
-body=GND
-nf=1
+L=0.15
+nf=1 
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
@@ -17,6 +42,39 @@ as="'int((nf+2)/2) * W/nf * 0.29'"
 ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
 nrd="'0.29 / W'" nrs="'0.29 / W'"
 sa=0 sb=0 sd=0
-model=nfet_03v3_nvt
+model=nfet_01v8
 spiceprefix=X
+}
+C {sky130_fd_pr/nfet_01v8.sym} 60 30 0 1 {name=M2
+W=1
+L=0.15
+nf=1 
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=nfet_01v8
+spiceprefix=X
+}
+C {sky130_fd_pr/nfet_01v8.sym} 100 -30 1 1 {name=M3
+W=1
+L=0.15
+nf=1 
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=nfet_01v8
+spiceprefix=X
+}
+C {iopin.sym} 160 -100 0 0 {name=p3 lab=BL}
+C {iopin.sym} 40 -100 2 0 {name=p4 lab=BL_BAR}
+C {ipin.sym} 40 110 0 0 {name=p2 lab=Vdd/2}
+C {ipin.sym} 100 110 2 0 {name=p1 lab=clk
 }

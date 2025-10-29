@@ -74,7 +74,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {iopin.sym} 160 -100 0 0 {name=p3 lab=BL}
-C {iopin.sym} 40 -100 2 0 {name=p4 lab=BL_BAR}
+C {iopin.sym} 40 -100 2 0 {name=p4 lab=BL_N}
 C {ipin.sym} 40 110 0 0 {name=p2 lab=Vdd/2}
 C {ipin.sym} 100 110 2 0 {name=p1 lab=clk
 }

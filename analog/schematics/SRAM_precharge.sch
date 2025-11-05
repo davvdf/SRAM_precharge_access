@@ -11,8 +11,10 @@ N 160 -50 160 -0 {
 lab=#net1}
 N 40 -50 70 -50 {
 lab=#net2}
+lab=BL_N}
 N 40 -50 40 -0 {
 lab=#net2}
+lab=BL_N}
 N 80 30 120 30 {
 lab=#net3}
 N 100 -10 100 30 {
@@ -26,11 +28,11 @@ lab=#net4}
 N 160 -100 160 -50 {
 lab=#net1}
 N 40 -100 40 -50 {
-lab=#net2}
+lab=BL_N}
 N 40 80 40 110 {
 lab=#net4}
 N 100 30 100 110 {
-lab=#net3}
+lab=clk}
 C {sky130_fd_pr/nfet_01v8.sym} 140 30 0 0 {name=M1
 W=1
 L=0.15
@@ -79,3 +81,6 @@ C {ipin.sym} 40 110 0 0 {name=p2 lab=Vdd/2}
 C {ipin.sym} 100 110 2 0 {name=p1 lab=clk
 }
 C {devices/vdd.sym} -120 10 0 0 {name=l1 lab=VDD}
+C {devices/gnd.sym} -80 40 0 0 {name=l1 lab=GND}
+C {devices/gnd.sym} 250 30 0 0 {name=l2 lab=GND}
+C {devices/gnd.sym} 200 -50 0 0 {name=l3 lab=GND}

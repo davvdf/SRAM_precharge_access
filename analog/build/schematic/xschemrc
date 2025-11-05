@@ -10,8 +10,10 @@ puts "PDK set SKYWATER_STDCELLS to: $SKYWATER_STDCELLS"
 set PROJECT_NAME "template"
 set PROJECT_ROOT [file normalize "[file dirname [info script]]/../../schematics"]
 
+
 set dark_colorscheme 1
 set gaw_viewer "gaw"
+set editor "vim"
 set editor "vim"
 
 #### NETLIST CONFIGURATION
@@ -22,9 +24,14 @@ set netlist_type spice
 set spice_netlist 1
 
 set XSCHEM_LIBRARY_PATH {}
+set XSCHEM_LIBRARY_PATH {}
 append XSCHEM_LIBRARY_PATH :[file dirname [info script]]/../../schematics
 append XSCHEM_LIBRARY_PATH :[file dirname [info script]]/../../symbols/devices
 append XSCHEM_LIBRARY_PATH :[file dirname [info script]]/../../library
+
+# Need to be explicit paths for macOS
+append XSCHEM_LIBRARY_PATH :${XSCHEM_SHAREDIR}/xschem_library
+append XSCHEM_LIBRARY_PATH :${XSCHEM_SHAREDIR}/xschem_library/devices
 
 # Add back the essential PDK paths
 append XSCHEM_LIBRARY_PATH :${XSCHEM_SHAREDIR}/xschem_library

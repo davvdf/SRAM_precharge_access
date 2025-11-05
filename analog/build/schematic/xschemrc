@@ -24,18 +24,20 @@ set netlist_type spice
 set spice_netlist 1
 
 set XSCHEM_LIBRARY_PATH {}
-set XSCHEM_LIBRARY_PATH {}
-append XSCHEM_LIBRARY_PATH :[file dirname [info script]]/../../schematics
-append XSCHEM_LIBRARY_PATH :[file dirname [info script]]/../../symbols/devices
-append XSCHEM_LIBRARY_PATH :[file dirname [info script]]/../../library
 
-# Need to be explicit paths for macOS
-append XSCHEM_LIBRARY_PATH :${XSCHEM_SHAREDIR}/xschem_library
-append XSCHEM_LIBRARY_PATH :${XSCHEM_SHAREDIR}/xschem_library/devices
+# Project libraries FIRST (so your custom symbols take precedence)
+append XSCHEM_LIBRARY_PATH :[file dirname [info script]]/../../schematics
+append XSCHEM_LIBRARY_PATH :[file dirname [info script]]/../../symbols
+append XSCHEM_LIBRARY_PATH :[file dirname [info script]]/../../library
 
 # Add back the essential PDK paths
 append XSCHEM_LIBRARY_PATH :${XSCHEM_SHAREDIR}/xschem_library
+append XSCHEM_LIBRARY_PATH :${XSCHEM_SHAREDIR}/xschem_library/devices
+
+# PDK libraries
 append XSCHEM_LIBRARY_PATH :$env(HOME)/.volare/volare/sky130/versions/fa87f8f4bbcc7255b6f0c0fb506960f531ae2392/sky130A/libs.tech/xschem
+
+puts "XSCHEM_LIBRARY_PATH: $XSCHEM_LIBRARY_PATH"
 
 ## Directory colors
 array unset dircolor

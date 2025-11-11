@@ -3,25 +3,44 @@
 V3 clk GND PULSE(0 1.8 0n 0.1n 0.1n 7.5n 15.15n)
 x2 clk VGND VNB VPB VPWR net3 sky130_fd_sc_hd__clkinv_1
 V4 net1 GND DC 0.9 AC 0.01
-CBLB BL_N GND 500f m=1
-CBL BL GND 500f m=1
+CBLB BL_N GND 300f m=1
+CBL BL GND 300f m=1
 x1 net3 BL_N BL net2 net1 clk precharge_trans_gate
-V1 net2 GND 1.8
+V1 net2 GND DC 1.8 AC 0.01
 **** begin user architecture code
 
 .include "/home/david/.volare/volare/sky130/versions/fa87f8f4bbcc7255b6f0c0fb506960f531ae2392/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice"
-*.noise v(BL) V4 dec 10 1 66MEG
-.tran 100p 5n
-.ic V(BL)=0V V(BL_N)=1.8V
-.save all
+
+.ic V(BL)=0 V(BL_n)=1.8V
+.control
+* Nested loops for all corners
+foreach temp_val -40 27 125
+  foreach vdd_val 1.79 1.8 1.81
+      reset
+      alter V1 = $vdd_val
+      set temp = $temp_val
+
+
+      tran 0.01n 5n
+
+      meas tran t_pch WHEN V(BL)=0.895 CROSS=1
+
+      echo "T=$temp_val, VDD=$vdd_val, t_pch=$&t_pch" >> corners.txt
+    end
+  end
+end
+
+rusage all
+.endc
+.noise v(BL) V4 dec 10 1 66MEG
 
 
 .param mc_mm_switch=0
 .param mc_pr_switch=0
-.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/tt.spice
+.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/fs.spice
 .include /home/david/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
 .include /home/david/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
-.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/tt/specialized_cells.spice
+.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/fs/specialized_cells.spice
 
 **** end user architecture code
 **.ends
@@ -48,6 +67,9 @@ XM2 VDD_div2 clk_n BL VDD sky130_fd_pr__pfet_01v8 L=0.15 W=3 nf=1 ad='int((nf+1)
 XM4 BL_N clk_n VDD_div2 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=3 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
 + as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
 + nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM5 BL clk BL_N GND sky130_fd_pr__nfet_01v8 L=0.15 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
 .ends
 
 .GLOBAL GND

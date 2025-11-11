@@ -37,7 +37,7 @@ C {vsource.sym} -110 130 0 0 {name=V3 value="PULSE(0 1.8 0n 0.1n 0.1n 7.5n 15.15
 C {vsource.sym} -190 100 0 0 {name=V4 value=0.9 savecurrent=false}
 C {devices/gnd.sym} -190 130 0 0 {name=l3 lab=GND}
 C {devices/gnd.sym} -110 160 0 0 {name=l2 lab=GND}
-C {code_shown.sym} -390 -60 0 0 {name=s1 only_toplevel=false value=".tran 100p 5n
-.ic V(BL)=0V V(BL_N)=1.8V
+C {code_shown.sym} -390 -60 0 0 {name=s1 only_toplevel=false value=".tran 100p 2n
+.ic V(BL)=1.8V V(BL_N)=0V
 .save all"}
 C {sky130_fd_pr/corner.sym} -370 100 0 0 {name=CORNER only_toplevel=false corner=ff}

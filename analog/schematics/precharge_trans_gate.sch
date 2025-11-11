@@ -39,6 +39,18 @@ N 60 50 110 50 {
 lab=GND}
 N 110 50 110 110 {
 lab=GND}
+N -140 70 -140 190 {
+lab=BL_N}
+N -140 190 -30 190 {
+lab=BL_N}
+N 30 190 140 190 {
+lab=BL}
+N 140 70 140 190 {
+lab=BL}
+N -0 110 0 150 {
+lab=clk}
+N 0 190 0 240 {
+lab=GND}
 N -60 -70 -60 -40 {
 lab=VDD}
 N -60 -40 230 -40 {
@@ -112,4 +124,19 @@ spiceprefix=X
 }
 C {devices/gnd.sym} -110 110 0 0 {name=l1 lab=GND}
 C {devices/gnd.sym} 110 110 0 0 {name=l2 lab=GND}
+C {sky130_fd_pr/nfet_01v8.sym} 0 170 1 0 {name=M5
+L=0.15
+W=5
+nf=1 
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.29'" 
+pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
+as="'int((nf+2)/2) * W/nf * 0.29'" 
+ps="'2*int((nf+2)/2) * (W/nf + 0.29)'"
+nrd="'0.29 / W'" nrs="'0.29 / W'"
+sa=0 sb=0 sd=0
+model=nfet_01v8
+spiceprefix=X
+}
+C {devices/gnd.sym} 0 240 0 0 {name=l3 lab=GND}
 C {ipin.sym} 230 -70 1 0 {name=p6 lab=VDD}

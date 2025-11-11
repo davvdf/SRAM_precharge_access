@@ -7,8 +7,8 @@ V3 net1 GND PULSE(0 1.8 0n 0.1n 0.1n 7.5n 15.15n)
 V4 net2 GND 0.9
 **** begin user architecture code
 
-.tran 100p 5n
-.ic V(BL)=0V V(BL_N)=1.8V
+.tran 100p 2n
+.ic V(BL)=1.8V V(BL_N)=0V
 .save all
 
 

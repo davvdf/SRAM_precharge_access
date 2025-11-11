@@ -199,9 +199,11 @@ lab=GND}
 C {vsource.sym} -230 80 0 0 {name=V3 value="PULSE(0 1.8 0n 0.1n 0.1n 7.5n 15.15n)" savecurrent=false}
 C {sky130_stdcells/clkinv_1.sym} -180 -20 0 0 {name=x2 VGND=VGND VNB=VNB VPB=VPB VPWR=VPWR prefix=sky130_fd_sc_hd__ }
 C {vsource.sym} -310 60 0 0 {name=V4 value="DC 0.9 AC 0.01" savecurrent=false}
-C {code_shown.sym} -760 -480 0 0 {name=s1 only_toplevel=false value=".param mc_mm_switch=0 
-.include \\"/home/david/.volare/volare/sky130/versions/fa87f8f4bbcc7255b6f0c0fb506960f531ae2392/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice\\"
-.noise v(BL) V4 dec 10 1 66MEG"}
+C {code_shown.sym} -760 -480 0 0 {name=s1 only_toplevel=false value=".include \\"/home/david/.volare/volare/sky130/versions/fa87f8f4bbcc7255b6f0c0fb506960f531ae2392/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice\\"
+*.noise v(BL) V4 dec 10 1 66MEG
+.tran 100p 5n
+.ic V(BL)=0V V(BL_N)=1.8V
+.save all"}
 C {capa.sym} 320 10 0 0 {name=CBLB
 m=1
 value=500f

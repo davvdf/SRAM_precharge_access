@@ -49,7 +49,6 @@ setup: update-pdk
 	@echo "Ignore errors above this ================"
 
 schematic: setup
-	@echo "Hello World!"
 	@echo "Opening xschem..."
 	@if [ ! -f "../../schematics/$(TOP_SCHEMATIC).sch" ]; then \
 		echo "Creating empty schematic file: $(TOP_SCHEMATIC).sch"; \

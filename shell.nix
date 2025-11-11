@@ -145,7 +145,7 @@ in
       yosys
       gtkwave
       gaw
-      python312Full
+      python312
       python312Packages.pip
       python312Packages.numpy
       python312Packages.setuptools
@@ -202,8 +202,8 @@ in
       unset NIX_ENFORCE_NO_NATIVE
 
       # Python and C compilation paths
-      export CPATH="${pkgs.python312Full}/include/python3.11:${selfBuiltPackages.ngspice-shared}/include:$CPATH"
-      export NIX_LD_LIBRARY_PATH="${pkgs.python312Full}/lib:${selfBuiltPackages.ngspice-shared}/lib:$NIX_LD_LIBRARY_PATH"
+      export CPATH="${pkgs.python312}/include/python3.11:${selfBuiltPackages.ngspice-shared}/include:$CPATH"
+      export NIX_LD_LIBRARY_PATH="${pkgs.python312}/lib:${selfBuiltPackages.ngspice-shared}/lib:$NIX_LD_LIBRARY_PATH"
       export PKG_CONFIG_PATH="${selfBuiltPackages.ngspice-shared}/lib/pkgconfig:$PKG_CONFIG_PATH"
 
       export NIX_LD=$(cat ${pkgs.stdenv.cc}/nix-support/dynamic-linker)

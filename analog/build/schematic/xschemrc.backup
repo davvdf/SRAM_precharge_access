@@ -1,4 +1,4 @@
-source $env(HOME)/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/xschem/xschemrc
+source $env(HOME)/.volare/volare/sky130/versions/fa87f8f4bbcc7255b6f0c0fb506960f531ae2392/sky130A/libs.tech/xschem/xschemrc
 
 set SKYWATER_MODELS "$env(HOME)/.volare/sky130A/libs.tech/ngspice"
 set SKYWATER_STDCELLS "$env(HOME)/.volare/sky130A/libs.ref/sky130_fd_sc_hd/spice"
@@ -10,8 +10,10 @@ puts "PDK set SKYWATER_STDCELLS to: $SKYWATER_STDCELLS"
 set PROJECT_NAME "template"
 set PROJECT_ROOT [file normalize "[file dirname [info script]]/../../schematics"]
 
+
 set dark_colorscheme 1
 set gaw_viewer "gaw"
+set editor "vim"
 set editor "vim"
 
 #### NETLIST CONFIGURATION
@@ -21,7 +23,6 @@ set XSCHEM_NETLIST_DIR $netlist_dir
 set netlist_type spice
 set spice_netlist 1
 
-# Clear and rebuild library path - use APPEND, not lappend
 set XSCHEM_LIBRARY_PATH {}
 
 # Project libraries FIRST (so your custom symbols take precedence)
@@ -29,18 +30,7 @@ append XSCHEM_LIBRARY_PATH :[file dirname [info script]]/../../schematics
 append XSCHEM_LIBRARY_PATH :[file dirname [info script]]/../../symbols
 append XSCHEM_LIBRARY_PATH :[file dirname [info script]]/../../library
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-# Need to be explicit paths for macOS
-append XSCHEM_LIBRARY_PATH :${XSCHEM_SHAREDIR}/xschem_library
-append XSCHEM_LIBRARY_PATH :${XSCHEM_SHAREDIR}/xschem_library/devices
-
->>>>>>> 6c4ceea (precharge tb)
 # Add back the essential PDK paths
-=======
-# Core xschem libraries - add both main library and devices subdirectory
->>>>>>> f23681d (smal chagnes)
 append XSCHEM_LIBRARY_PATH :${XSCHEM_SHAREDIR}/xschem_library
 append XSCHEM_LIBRARY_PATH :${XSCHEM_SHAREDIR}/xschem_library/devices
 

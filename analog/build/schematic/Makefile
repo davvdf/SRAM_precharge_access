@@ -58,8 +58,8 @@ schematic: setup
 
 spice: setup
 	@echo "Running SPICE simulations..."
-	@if [ -d ../../netlist ]; then \
-		for file in ../../netlist/*.spice; do \
+	@if [ -d ./spice ]; then \
+		for file in ./spice/*.spice; do \
 			if [ -f "$$file" ]; then \
 				echo "Running simulation: $$file"; \
 				$(NGSPICE) -b "$$file"; \

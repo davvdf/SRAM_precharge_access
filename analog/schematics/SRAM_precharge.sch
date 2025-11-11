@@ -5,40 +5,43 @@ K {}
 V {}
 S {}
 E {}
-N 130 -50 160 -50 {
+N 30 -80 60 -80 {
 lab=BL}
-N 160 -50 160 -0 {
+N 60 -80 60 -30 {
 lab=BL}
-N 40 -50 70 -50 {
-<<<<<<< HEAD
-lab=#net2}
+N -60 -80 -30 -80 {
 lab=BL_N}
-N 40 -50 40 -0 {
-lab=#net2}
-=======
+N -60 -80 -60 -30 {
 lab=BL_N}
-N 40 -50 40 -0 {
->>>>>>> f23681d (smal chagnes)
-lab=BL_N}
-N 80 30 120 30 {
+N -20 0 20 0 {
 lab=clk}
-N 100 -10 100 30 {
+N 0 -40 0 0 {
 lab=clk}
-N 40 60 40 80 {
+N -60 30 -60 50 {
 lab=Vdd/2}
-N 160 60 160 80 {
+N 60 30 60 50 {
 lab=Vdd/2}
-N 40 80 160 80 {
+N -60 50 60 50 {
 lab=Vdd/2}
-N 160 -100 160 -50 {
+N 60 -130 60 -80 {
 lab=BL}
-N 40 -100 40 -50 {
+N -60 -130 -60 -80 {
 lab=BL_N}
-N 40 80 40 110 {
+N -60 50 -60 80 {
 lab=Vdd/2}
-N 100 30 100 110 {
+N 0 0 0 80 {
 lab=clk}
-C {sky130_fd_pr/nfet_01v8.sym} 140 30 0 0 {name=M1
+N -180 0 -60 0 {
+lab=#net1}
+N 60 0 150 0 {
+lab=GND}
+N 0 -100 0 -80 {
+lab=GND}
+N 0 -100 100 -100 {
+lab=GND}
+N 100 -100 100 -80 {
+lab=GND}
+C {sky130_fd_pr/nfet_01v8.sym} 40 0 0 0 {name=M1
 W=1
 L=0.15
 nf=1 
@@ -52,7 +55,7 @@ sa=0 sb=0 sd=0
 model=nfet_01v8
 spiceprefix=X
 }
-C {sky130_fd_pr/nfet_01v8.sym} 60 30 0 1 {name=M2
+C {sky130_fd_pr/nfet_01v8.sym} -40 0 0 1 {name=M2
 W=1
 L=0.15
 nf=1 
@@ -66,7 +69,7 @@ sa=0 sb=0 sd=0
 model=nfet_01v8
 spiceprefix=X
 }
-C {sky130_fd_pr/nfet_01v8.sym} 100 -30 1 1 {name=M3
+C {sky130_fd_pr/nfet_01v8.sym} 0 -60 1 1 {name=M3
 W=1
 L=0.15
 nf=1 
@@ -80,15 +83,11 @@ sa=0 sb=0 sd=0
 model=nfet_01v8
 spiceprefix=X
 }
-C {iopin.sym} 160 -100 0 0 {name=p3 lab=BL}
-C {iopin.sym} 40 -100 2 0 {name=p4 lab=BL_N}
-C {ipin.sym} 40 110 0 0 {name=p2 lab=Vdd/2}
-C {ipin.sym} 100 110 2 0 {name=p1 lab=clk
+C {iopin.sym} 60 -130 0 0 {name=p3 lab=BL}
+C {iopin.sym} -60 -130 2 0 {name=p4 lab=BL_N}
+C {ipin.sym} -60 80 0 0 {name=p2 lab=Vdd/2}
+C {ipin.sym} 0 80 2 0 {name=p1 lab=clk
 }
-<<<<<<< HEAD
-C {devices/vdd.sym} -120 10 0 0 {name=l1 lab=VDD}
-C {devices/gnd.sym} -80 40 0 0 {name=l1 lab=GND}
-C {devices/gnd.sym} 250 30 0 0 {name=l2 lab=GND}
-C {devices/gnd.sym} 200 -50 0 0 {name=l3 lab=GND}
-=======
->>>>>>> f23681d (smal chagnes)
+C {devices/gnd.sym} -180 0 0 0 {name=l1 lab=GND}
+C {devices/gnd.sym} 150 0 0 0 {name=l2 lab=GND}
+C {devices/gnd.sym} 100 -80 0 0 {name=l3 lab=GND}

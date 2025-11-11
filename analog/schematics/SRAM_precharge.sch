@@ -32,7 +32,7 @@ lab=Vdd/2}
 N 0 0 0 80 {
 lab=clk}
 N -180 0 -60 0 {
-lab=#net1}
+lab=GND}
 N 60 0 150 0 {
 lab=GND}
 N 0 -100 0 -80 {
@@ -42,7 +42,7 @@ lab=GND}
 N 100 -100 100 -80 {
 lab=GND}
 C {sky130_fd_pr/nfet_01v8.sym} 40 0 0 0 {name=M1
-W=1
+W=10
 L=0.15
 nf=1 
 mult=1
@@ -56,7 +56,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} -40 0 0 1 {name=M2
-W=1
+W=10
 L=0.15
 nf=1 
 mult=1
@@ -70,7 +70,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 0 -60 1 1 {name=M3
-W=1
+W=10
 L=0.15
 nf=1 
 mult=1

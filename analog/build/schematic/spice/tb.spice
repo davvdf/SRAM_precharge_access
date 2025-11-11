@@ -1,0 +1,45 @@
+** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/tb.sch
+**.subckt tb
+x1 BL_N BL net1 net2 SRAM_precharge
+C1 BL_N GND 240f m=1
+C2 BL GND 240f m=1
+V3 net1 GND PULSE(0 1.8 0n 0.1n 0.1n 7.5n 15.15n)
+V4 net2 GND 0.9
+**** begin user architecture code
+
+.tran 100p 5n
+.ic V(BL)=0V V(BL_N)=1.8V
+.save all
+
+
+.param mc_mm_switch=0
+.param mc_pr_switch=0
+.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/ff.spice
+.include /home/david/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
+.include /home/david/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
+.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/ff/specialized_cells.spice
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  SRAM_precharge.sym # of pins=4
+** sym_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/SRAM_precharge.sym
+** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/SRAM_precharge.sch
+.subckt SRAM_precharge BL_N BL clk Vdd/2
+*.iopin BL
+*.iopin BL_N
+*.ipin Vdd/2
+*.ipin clk
+XM1 BL clk Vdd/2 GND sky130_fd_pr__nfet_01v8 L=0.15 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 BL_N clk Vdd/2 GND sky130_fd_pr__nfet_01v8 L=0.15 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM3 BL clk BL_N GND sky130_fd_pr__nfet_01v8 L=0.15 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+.GLOBAL GND
+.end

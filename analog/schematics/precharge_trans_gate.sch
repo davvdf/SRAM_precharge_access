@@ -27,18 +27,6 @@ N -140 70 -90 70 {
 lab=BL_N}
 N -60 110 60 110 {
 lab=clk}
-N -60 -70 -60 -50 {
-lab=VDD_div2}
-N -60 -50 -30 -50 {
-lab=VDD_div2}
-N -30 -70 -30 -50 {
-lab=VDD_div2}
-N 60 -70 60 -50 {
-lab=BL}
-N 60 -50 90 -50 {
-lab=BL}
-N 90 -70 90 -50 {
-lab=BL}
 N -60 50 -60 70 {
 lab=GND}
 N -110 50 -60 50 {
@@ -63,6 +51,14 @@ N -0 110 0 150 {
 lab=clk}
 N 0 190 0 240 {
 lab=GND}
+N -60 -70 -60 -40 {
+lab=VDD_div2}
+N -60 -40 230 -40 {
+lab=VDD_div2}
+N 230 -70 230 -40 {
+lab=VDD_div2}
+N 60 -70 60 -40 {
+lab=VDD_div2}
 C {sky130_fd_pr/nfet_01v8.sym} 60 90 3 0 {name=M1
 L=0.15
 W=2
@@ -130,7 +126,7 @@ C {devices/gnd.sym} -110 110 0 0 {name=l1 lab=GND}
 C {devices/gnd.sym} 110 110 0 0 {name=l2 lab=GND}
 C {sky130_fd_pr/nfet_01v8.sym} 0 170 1 0 {name=M5
 L=0.15
-W=1
+W=4
 nf=1 
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -143,3 +139,4 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {devices/gnd.sym} 0 240 0 0 {name=l3 lab=GND}
+C {ipin.sym} 230 -70 1 0 {name=p6 lab=VDD}

@@ -26,7 +26,7 @@ foreach temp_val -40 27 125
       meas tran t_pch WHEN new_val=0.002 CROSS=1
 
       echo "T=$temp_val, VDD=$vdd_val, t_pch=$&t_pch"
-    * >> smallest_diff.txt
+	* >> smallest_diff.txt
     end
   end
 end

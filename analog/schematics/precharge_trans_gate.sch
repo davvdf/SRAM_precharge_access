@@ -87,7 +87,7 @@ sa=0 sb=0 sd=0
 model=nfet_01v8
 spiceprefix=X
 }
-C {ipin.sym} 0 -60 1 0 {name=p4 lab=VDD_div2}
+C {ipin.sym} 0 10 2 0 {name=p4 lab=VDD_div2}
 C {ipin.sym} 60 -110 1 0 {name=p1 lab=clk_n
 }
 C {ipin.sym} 60 110 3 0 {name=p3 lab=clk
@@ -126,7 +126,7 @@ C {devices/gnd.sym} -110 110 0 0 {name=l1 lab=GND}
 C {devices/gnd.sym} 110 110 0 0 {name=l2 lab=GND}
 C {sky130_fd_pr/nfet_01v8.sym} 0 170 1 0 {name=M5
 L=0.15
-W=5
+W=7
 nf=1 
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 

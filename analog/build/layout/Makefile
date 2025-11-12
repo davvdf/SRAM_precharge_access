@@ -1,15 +1,16 @@
 include ../config.mk
 MAGIC = magic
-.PHONY: layout export_layout clean
+.PHONY: layout clean
 PARENT_OUTPUT_DIR = PARENT
 
 layout:
 	@echo "Opening magic for layout..."
 	@echo "CREATING TOP FILE, THIS IS THE MAIN SUB-DIRECTORY"
 	cp $(PDK_ROOT)/$(PDK)/libs.tech/magic/sky130A.magicrc .
-	cd ../../layout && $(MAGIC) -rcfile ../build/layout/sky130A.magicrc -T sky130A -noconsole \
-		-eval "set TOP_LEVEL_CELL_NAME $(TOP_LAYOUT)" \
-		-source ../build/layout/tinytapeout_template.tcl
+	cd ../../layout && ( \
+		echo "set TOP_LEVEL_CELL_NAME $(TOP_LAYOUT)"; \
+		cat ../build/layout/tinytapeout_template.tcl; \
+	) | $(MAGIC) -rcfile ../build/layout/sky130A.magicrc -T sky130A -noconsole
 	@echo "Exporting to parent..."
 	@if [ -n "$(PARENT_OUTPUT_DIR)" ]; then \
 		echo "Copying final layout to parent project..."; \
@@ -20,6 +21,7 @@ layout:
 	else \
 		echo "No parent project configured - layout remains local"; \
 	fi
+
 
 clean:
 	@echo "Cleaning generated files..."

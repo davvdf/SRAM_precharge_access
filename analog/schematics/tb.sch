@@ -5,6 +5,29 @@ K {}
 V {}
 S {}
 E {}
+B 2 -160 -430 640 -30 {flags=graph
+y1=0
+y2=2
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=0
+x2=10e-6
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+node="bl_n
+bl
+"
+color="7 8"
+dataset=-1
+unitx=1
+logx=0
+logy=0
+}
 N 220 70 250 70 {
 lab=BL}
 N 250 70 290 70 {
@@ -37,7 +60,25 @@ C {vsource.sym} -110 130 0 0 {name=V3 value="PULSE(0 1.8 0n 0.1n 0.1n 7.5n 15.15
 C {vsource.sym} -190 100 0 0 {name=V4 value=0.9 savecurrent=false}
 C {devices/gnd.sym} -190 130 0 0 {name=l3 lab=GND}
 C {devices/gnd.sym} -110 160 0 0 {name=l2 lab=GND}
-C {code_shown.sym} -390 -60 0 0 {name=s1 only_toplevel=false value=".tran 100p 2n
-.ic V(BL)=1.8V V(BL_N)=0V
-.save all"}
-C {sky130_fd_pr/corner.sym} -370 100 0 0 {name=CORNER only_toplevel=false corner=ff}
+C {code_shown.sym} -820 -320 0 0 {name=s1 only_toplevel="false" value=".tran 100p 5n
+.ic V(BL)=0.895 V(BL_n)=0.905
+.save all
+
+.control
+  let mc_runs = 3
+  let run = 1
+
+  dowhile run <= mc_runs
+    reset
+    run
+    let new_val@run = v(BL_n) - v(BL)   ; create a unique vector for each run
+    let run = run + 1
+  end
+
+  plot new_val1 new_val2 new_val3
+.endc"}
+C {sky130_fd_pr/corner.sym} -370 100 0 0 {name=CORNER only_toplevel=false corner=tt_mm}
+C {devices/launcher.sym} -420 -230 0 0 {name=h5
+descr="load waves" 
+tclcommand="xschem raw_read $netlist_dir/tb.raw tran"
+}

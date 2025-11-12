@@ -7,17 +7,31 @@ V3 net1 GND PULSE(0 1.8 0n 0.1n 0.1n 7.5n 15.15n)
 V4 net2 GND 0.9
 **** begin user architecture code
 
-.tran 100p 2n
-.ic V(BL)=1.8V V(BL_N)=0V
+.tran 100p 20n
+.ic V(BL)=0.895 V(BL_n)=0.905
 .save all
 
+.control
+  let mc_runs = 3      ; number of runs (try 3 to keep plots readable)
+  let run = 1
 
-.param mc_mm_switch=0
+  dowhile run <= mc_runs
+    reset
+    run
+    let new_val = v(BL_n) - v(BL)
+    plot new_val title "Run @run" 
+    let run = run + 1
+  end
+.endc
+
+
+
+.param mc_mm_switch=1
 .param mc_pr_switch=0
-.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/ff.spice
+.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/tt.spice
 .include /home/david/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
 .include /home/david/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
-.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/ff/specialized_cells.spice
+.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/tt/specialized_cells.spice
 
 **** end user architecture code
 **.ends

@@ -37,8 +37,20 @@ N 80 -40 80 -20 {
 lab=access}
 N -80 -40 -80 -20 {
 lab=n_access}
+N -100 50 -80 50 {
+lab=GND}
+N -100 50 -100 90 {
+lab=GND}
+N -100 90 -80 90 {
+lab=GND}
+N 80 50 110 50 {
+lab=GND}
+N 110 50 110 90 {
+lab=GND}
+N 80 90 110 90 {
+lab=GND}
 C {sky130_fd_pr/nfet_01v8.sym} 60 50 0 0 {name=M1
-W=1
+W=0.45
 L=0.15
 nf=1 
 mult=1
@@ -52,7 +64,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} -60 50 0 1 {name=M2
-W=1
+W=0.45
 L=0.15
 nf=1 
 mult=1
@@ -69,17 +81,15 @@ C {vdd.sym} -80 -120 0 0 {name=l1 lab=VDD}
 C {vdd.sym} 80 -120 0 0 {name=l2 lab=VDD}
 C {gnd.sym} -80 100 0 0 {name=l3 lab=GND}
 C {gnd.sym} 80 100 0 0 {name=l4 lab=GND}
-C {sky130_fd_pr/res_high_po.sym} -80 -70 0 0 {name=R1
-W=2
-L=314
-model=res_high_po
-spiceprefix=X
-mult=1}
-C {sky130_fd_pr/res_high_po.sym} 80 -70 0 0 {name=R2
-W=2
-L=314
-model=res_high_po
-spiceprefix=X
-mult=1}
 C {iopin.sym} 80 -20 0 0 {name=p1 lab=access}
 C {iopin.sym} -80 -20 2 0 {name=p2 lab=n_access}
+C {devices/res.sym} -80 -70 0 0 {name=R1
+value=50k
+footprint=1206
+device=resistor
+m=1}
+C {devices/res.sym} 80 -70 0 0 {name=R2
+value=50k
+footprint=1206
+device=resistor
+m=1}

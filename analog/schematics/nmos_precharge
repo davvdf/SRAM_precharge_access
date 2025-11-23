@@ -1,0 +1,64 @@
+v {xschem version=3.4.4 file_version=1.2
+}
+G {}
+K {}
+V {}
+S {}
+E {}
+N 210 -130 260 -130 {
+lab=BL_N}
+N 210 -70 260 -70 {
+lab=BL_N}
+N 210 -110 300 -110 {
+lab=BL}
+N 210 -50 300 -50 {
+lab=BL}
+N 260 -130 260 40 {
+lab=BL_N}
+N 300 -110 300 60 {
+lab=BL}
+N 210 60 300 60 {
+lab=BL}
+N 210 40 260 40 {
+lab=BL_N}
+N -320 -70 -90 -70 {
+lab=WL}
+N -320 -130 -320 -70 {
+lab=WL}
+N -320 -130 -90 -130 {
+lab=WL}
+N 300 60 300 80 {
+lab=BL}
+N 260 40 260 80 {
+lab=BL_N}
+N -180 40 -180 110 {
+lab=#net1}
+N -180 40 -90 40 {
+lab=#net1}
+C {Access_2T2R.sym} 60 -120 0 0 {name=x1}
+C {Access_4T.sym} 60 -60 0 0 {name=x2}
+C {vsource.sym} -180 140 0 0 {name=V3 value="PULSE(0 1.8 0n 0.2n 0.2n 7.5757n 15.1515n)" savecurrent=false}
+C {vsource.sym} -90 90 0 0 {name=V4 value="DC 0.9 AC 0.001" savecurrent=false}
+C {devices/gnd.sym} -180 170 0 0 {name=l1 lab=GND}
+C {devices/lab_pin.sym} 230 40 1 0 {name=p1 sig_type=std_logic lab=BL_N}
+C {devices/lab_pin.sym} 230 60 3 0 {name=p2 sig_type=std_logic lab=BL}
+C {vsource.sym} -320 -40 0 0 {name=V2 value="DC 1.8 AC 0.001" savecurrent=false}
+C {devices/gnd.sym} -320 -10 0 0 {name=l3 lab=GND}
+C {capa.sym} 300 110 0 0 {name=CBLB
+m=1
+value=300f
+footprint=1206
+device="ceramic capacitor"}
+C {capa.sym} 260 110 0 0 {name=CBL
+m=1
+value=300f
+footprint=1206
+device="ceramic capacitor"}
+C {devices/gnd.sym} 260 140 0 0 {name=l6 lab=GND}
+C {devices/gnd.sym} 300 140 0 0 {name=l8 lab=GND}
+C {devices/lab_pin.sym} -320 -70 0 0 {name=p4 sig_type=std_logic lab=WL}
+C {SRAM_precharge.sym} 60 50 0 0 {name=x3}
+C {devices/gnd.sym} -90 120 0 0 {name=l2 lab=GND}
+C {code_shown.sym} -810 -330 0 0 {name=s1 only_toplevel=false value=".ic V(BL)=0 V(BL_N)=1.8V
+.tran 10p 2n"}
+C {sky130_fd_pr/corner.sym} -20 -330 0 0 {name=CORNER only_toplevel=false corner=tt}

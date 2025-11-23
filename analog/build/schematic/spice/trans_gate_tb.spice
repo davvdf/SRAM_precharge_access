@@ -2,42 +2,20 @@
 **.subckt trans_gate_tb
 V3 clk GND PULSE(0 1.8 0n 0.2n 0.2n 7.5n 15.15n)
 x2 clk VGND VNB VPB VPWR net3 sky130_fd_sc_hd__clkinv_1
-V4 net1 GND DC 0.9 AC 0.001
+V4 net2 GND DC 0.9 AC 0.001
 CBLB BL_N GND 300f m=1
 CBL BL GND 300f m=1
-x1 net3 BL_N BL net2 net1 clk precharge_trans_gate
-V1 net2 GND DC 1.8 AC 0.001
+x1 net3 BL_N BL net1 net2 clk precharge_trans_gate
+V1 net1 GND DC 1.8 AC 0.001
 **** begin user architecture code
 
 .include "/home/david/.volare/volare/sky130/versions/fa87f8f4bbcc7255b6f0c0fb506960f531ae2392/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice"
 
-.ic V(BL)=0.895 V(BL_n)=0.905V
-.control
-* Nested loops for all corners
-foreach temp_val -40 27 125
-  foreach vdd_val 1.79 1.8 1.81
-      reset
-      alter V1 = $vdd_val
-      set temp = $temp_val
+.ic V(BL)=0 V(BL_n)=1.8V
+.tran 100p 5n
 
 
-      tran 0.001n 0.5n
-      let new_val=abs(V(BL_n)-V(BL))
-      meas tran t_pch WHEN new_val=0.002 CROSS=1
-
-      echo "T=$temp_val, VDD=$vdd_val, t_pch=$&t_pch"
-	* >> smallest_diff.txt
-    end
-  end
-end
-plot tran1.new_val tran2.new_val tran3.new_val tran4.new_val tran5.new_val tran6.new_val
-+ tran7.new_val tran8.new_val tran9.new_val
-rusage all
-.endc
-.noise v(BL) V4 dec 10 1 66MEG
-
-
-.param mc_mm_switch=1
+.param mc_mm_switch=0
 .param mc_pr_switch=0
 .include /home/david/.volare/sky130A/libs.tech/ngspice/corners/tt.spice
 .include /home/david/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice

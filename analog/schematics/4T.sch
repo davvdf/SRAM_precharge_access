@@ -37,6 +37,30 @@ N -120 10 -80 10 {
 lab=n_access}
 N 80 -10 130 -10 {
 lab=access}
+N -100 -50 -80 -50 {
+lab=VDD}
+N 80 -50 100 -50 {
+lab=VDD}
+N 100 -80 100 -50 {
+lab=VDD}
+N 80 -80 100 -80 {
+lab=VDD}
+N -100 -80 -80 -80 {
+lab=VDD}
+N -100 -80 -100 -50 {
+lab=VDD}
+N 80 50 100 50 {
+lab=GND}
+N 100 50 100 80 {
+lab=GND}
+N 80 80 100 80 {
+lab=GND}
+N -100 50 -80 50 {
+lab=GND}
+N -100 50 -100 80 {
+lab=GND}
+N -100 80 -80 80 {
+lab=GND}
 C {sky130_fd_pr/nfet_01v8.sym} 60 50 0 0 {name=M1
 W=1
 L=0.15

@@ -1,0 +1,23 @@
+.ic V(BL)=0.895 V(BL_n)=0.905V
+.control
+* Nested loops for all corners
+foreach temp_val -40 27 125
+  foreach vdd_val 1.79 1.8 1.81
+      reset
+      alter V1 = $vdd_val
+      set temp = $temp_val
+      
+      
+      tran 0.001n 0.5n
+      let new_val=abs(V(BL_n)-V(BL))
+      meas tran t_pch WHEN new_val=0.002 CROSS=1
+      
+      echo \\"T=$temp_val, VDD=$vdd_val, t_pch=$&t_pch\\" 
+    * >> smallest_diff.txt
+    end
+  end
+end
+plot tran1.new_val tran2.new_val tran3.new_val tran4.new_val tran5.new_val tran6.new_val tran7.new_val tran8.new_val tran9.new_val
+rusage all
+.endc
+.noise v(BL) V4 dec 10 1 66MEG"

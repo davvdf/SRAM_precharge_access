@@ -1,0 +1,53 @@
+** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/write_tb.sch
+**.subckt write_tb
+x1 WL BL_N BL Access_2T2R
+x2 WL BL_N BL Access_4T
+x3 net3 BL_N BL net2 net1 clk precharge_trans_gate
+V3 clk GND PULSE(0 1.8 0n 0.2n 0.2n 7.5757n 15.1515n)
+x4 clk VGND VNB VPB VPWR net3 sky130_fd_sc_hd__clkinv_1
+V4 net1 GND DC 0.9 AC 0.001
+V1 net2 GND DC 1.8 AC 0.001
+V2 WL GND DC 1.8 AC 0.001
+CBLB BL GND 300f m=1
+CBL BL_N GND 300f m=1
+V5 BL GND DC 0 AC 0.001
+V6 BL_N GND DC 1.8 AC 0.001
+**** begin user architecture code
+
+.param mc_mm_switch=0
+.param mc_pr_switch=0
+.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/tt.spice
+.include /home/david/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
+.include /home/david/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
+.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/tt/specialized_cells.spice
+
+
+.include "/home/david/.volare/volare/sky130/versions/fa87f8f4bbcc7255b6f0c0fb506960f531ae2392/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice"
+
+.tran 100p 30n
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  Access_2T2R.sym # of pins=3
+** sym_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/Access_2T2R.sym
+** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/Access_2T2R.sch
+.subckt Access_2T2R WL BL BL_N
+.ends
+
+
+* expanding   symbol:  Access_4T.sym # of pins=3
+** sym_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/Access_4T.sym
+** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/Access_4T.sch
+.subckt Access_4T WL BL BL_N
+.ends
+
+
+* expanding   symbol:  precharge_trans_gate.sym # of pins=6
+** sym_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/precharge_trans_gate.sym
+** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/precharge_trans_gate.sch
+.subckt precharge_trans_gate clk_n BL_N BL VDD VDD_div2 clk
+.ends
+
+.GLOBAL GND
+.end

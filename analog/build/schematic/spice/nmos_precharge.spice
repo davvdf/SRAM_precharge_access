@@ -1,0 +1,120 @@
+** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/nmos_precharge
+**.subckt nmos_precharge
+x1 WL BL_N BL Access_2T2R
+x2 WL BL_N BL Access_4T
+V3 net1 GND PULSE(0 1.8 0n 0.2n 0.2n 7.5757n 15.1515n)
+V4 net2 GND DC 0.9 AC 0.001
+V2 WL GND DC 1.8 AC 0.001
+CBLB BL GND 300f m=1
+CBL BL_N GND 300f m=1
+x3 BL_N BL net1 net2 SRAM_precharge
+**** begin user architecture code
+
+.ic V(BL)=0 V(BL_N)=1.8V
+.tran 10p 2n
+
+
+.param mc_mm_switch=0
+.param mc_pr_switch=0
+.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/tt.spice
+.include /home/david/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
+.include /home/david/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
+.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/tt/specialized_cells.spice
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  Access_2T2R.sym # of pins=3
+** sym_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/Access_2T2R.sym
+** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/Access_2T2R.sch
+.subckt Access_2T2R WL BL BL_N
+*.iopin BL_N
+*.iopin BL
+*.ipin WL
+XM3 BL_N WL net1 GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM4 net2 WL BL GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+x1 net1 net2 2T2R
+.ends
+
+
+* expanding   symbol:  Access_4T.sym # of pins=3
+** sym_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/Access_4T.sym
+** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/Access_4T.sch
+.subckt Access_4T WL BL BL_N
+*.iopin BL_N
+*.iopin BL
+*.ipin WL
+XM3 BL_N WL net1 GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM4 net2 WL BL GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+x1 net2 net1 4T
+.ends
+
+
+* expanding   symbol:  SRAM_precharge.sym # of pins=4
+** sym_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/SRAM_precharge.sym
+** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/SRAM_precharge.sch
+.subckt SRAM_precharge BL_N BL clk Vdd/2
+*.iopin BL
+*.iopin BL_N
+*.ipin Vdd/2
+*.ipin clk
+XM1 BL clk Vdd/2 GND sky130_fd_pr__nfet_01v8 L=0.15 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 BL_N clk Vdd/2 GND sky130_fd_pr__nfet_01v8 L=0.15 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM3 BL clk BL_N GND sky130_fd_pr__nfet_01v8 L=0.15 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+
+* expanding   symbol:  2T2R.sym # of pins=2
+** sym_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/2T2R.sym
+** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/2T2R.sch
+.subckt 2T2R n_access access
+*.iopin access
+*.iopin n_access
+XM1 access n_access GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.45 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM2 n_access access GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.45 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XR1 n_access VDD net1 sky130_fd_pr__res_high_po W=2 L=314 mult=1 m=1
+XR2 access VDD net2 sky130_fd_pr__res_high_po W=2 L=314 mult=1 m=1
+.ends
+
+
+* expanding   symbol:  4T.sym # of pins=2
+** sym_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/4T.sym
+** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/4T.sch
+.subckt 4T access n_access
+*.iopin access
+*.iopin n_access
+XM1 access n_access GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM2 n_access access GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM5 access n_access VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM6 n_access access VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+.GLOBAL GND
+.GLOBAL VDD
+.end

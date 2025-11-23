@@ -1,0 +1,131 @@
+** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/Access_tb.sch
+**.subckt Access_tb
+x4 net3 BL_N BL net1 net2 clk precharge_trans_gate
+V3 clk GND PULSE(0 1.8 0n 0.2n 0.2n 7.5n 15.15n)
+x3 clk VGND VNB VPB VPWR net3 sky130_fd_sc_hd__clkinv_1
+V4 net2 GND DC 0.9 AC 0.001
+V1 net1 GND DC 1.8 AC 0.001
+x1 WL BL BL_N Access_2T2R
+x2 WL BL BL_N Access_4T
+V2 WL GND DC 1.8 AC 0.001
+CBLB BL_N GND 300f m=1
+CBL BL GND 300f m=1
+**** begin user architecture code
+
+.include "/home/david/.volare/volare/sky130/versions/fa87f8f4bbcc7255b6f0c0fb506960f531ae2392/sky130A/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice"
+.ic V(BL)=0 V(BL_n)=1.8V
+.tran 100p 5n
+
+
+.param mc_mm_switch=0
+.param mc_pr_switch=0
+.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/tt.spice
+.include /home/david/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
+.include /home/david/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
+.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/tt/specialized_cells.spice
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  precharge_trans_gate.sym # of pins=6
+** sym_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/precharge_trans_gate.sym
+** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/precharge_trans_gate.sch
+.subckt precharge_trans_gate clk_n BL_N BL VDD VDD_div2 clk
+*.ipin VDD_div2
+*.ipin clk_n
+*.ipin clk
+*.iopin BL
+*.iopin BL_N
+*.ipin VDD
+XM1 VDD_div2 clk BL GND sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM3 BL_N clk VDD_div2 GND sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 VDD_div2 clk_n BL VDD sky130_fd_pr__pfet_01v8 L=0.15 W=3 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM4 BL_N clk_n VDD_div2 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=3 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM5 BL clk BL_N GND sky130_fd_pr__nfet_01v8 L=0.15 W=7 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+
+* expanding   symbol:  Access_2T2R.sym # of pins=3
+** sym_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/Access_2T2R.sym
+** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/Access_2T2R.sch
+.subckt Access_2T2R WL BL BL_N
+*.iopin BL_N
+*.iopin BL
+*.ipin WL
+XM3 BL_N WL net2 GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM4 net1 WL BL GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+x1 net2 net1 2T2R
+.ends
+
+
+* expanding   symbol:  Access_4T.sym # of pins=3
+** sym_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/Access_4T.sym
+** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/Access_4T.sch
+.subckt Access_4T WL BL BL_N
+*.iopin BL_N
+*.iopin BL
+*.ipin WL
+XM3 BL_N WL net2 GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM4 net1 WL BL GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+x1 net1 net2 4T
+.ends
+
+
+* expanding   symbol:  2T2R.sym # of pins=2
+** sym_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/2T2R.sym
+** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/2T2R.sch
+.subckt 2T2R n_access access
+*.iopin access
+*.iopin n_access
+XM1 access n_access GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.45 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM2 n_access access GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.45 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+R1 VDD n_access 50k m=1
+R2 VDD access 50k m=1
+.ends
+
+
+* expanding   symbol:  4T.sym # of pins=2
+** sym_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/4T.sym
+** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/4T.sch
+.subckt 4T access n_access
+*.iopin access
+*.iopin n_access
+XM1 access n_access GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM2 n_access access GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM5 access n_access VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM6 n_access access VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29'
++ as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)'
++ nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+.ends
+
+.GLOBAL GND
+.GLOBAL VDD
+.end

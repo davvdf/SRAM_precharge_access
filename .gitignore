@@ -10,3 +10,4 @@ Thumbs.db
 .venv/
 .tools/
 .tmp/
+.raw

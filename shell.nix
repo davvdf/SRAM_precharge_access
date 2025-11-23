@@ -109,8 +109,11 @@ in
       clang
       llvmPackages.libclang
       libffi.dev
+      fftw
+      libffi.dev
 
       # Digital design
+      iverilog
       iverilog
       slang
       verilator
@@ -122,9 +125,11 @@ in
       python312Packages.wheel
 
       # Openlane Dependencies
+      # Openlane Dependencies
       ruby
       stdenv.cc.cc.lib
       expat
+      swig
       swig
       zlib
 
@@ -132,6 +137,7 @@ in
       selfBuiltPackages.xschem
       selfBuiltPackages.ngspice-shared
       selfBuiltPackages.netgen
+      ngspice
       ngspice
       klayout
       magic-vlsi
@@ -165,13 +171,20 @@ in
       export CCACHE_DIR="$PROJECT_ROOT/.tools/ccache"
 
       # === Rust-Python Build Configuration ===
-      export CPATH="${pkgs.python312}/include/python3.12"
-      export LIBCLANG_PATH="${pkgs.llvmPackages.libclang.lib}/lib/libclang.so"
-      export PKG_CONFIG_PATH="${selfBuiltPackages.ngspice-shared}/lib/pkgconfig"
+      export LIBCLANG_PATH="${pkgs.llvmPackages.libclang.lib}/lib"
+      export BINDGEN_EXTRA_CLANG_ARGS="-I${pkgs.glibc.dev}/include -I${selfBuiltPackages.ngspice-shared}/include"
+      export CPATH="${pkgs.python312}/include/python3.12:${selfBuiltPackages.ngspice-shared}/include:$CPATH"
+      export NIX_LD_LIBRARY_PATH="${pkgs.python312}/lib:${selfBuiltPackages.ngspice-shared}/lib:$NIX_LD_LIBRARY_PATH"
+      export PKG_CONFIG_PATH="${selfBuiltPackages.ngspice-shared}/lib/pkgconfig:$PKG_CONFIG_PATH"
 
       # === PDK Configuration ===
       export PDK="sky130A"
+      # === PDK Configuration ===
+      export PDK="sky130A"
       export PDK_VERSION="fa87f8f4bbcc7255b6f0c0fb506960f531ae2392"
+      export PDK_ROOT="$HOME/.volare"
+
+      # === EDA Tools Configuration ===
       export PDK_ROOT="$HOME/.volare"
 
       # === EDA Tools Configuration ===
@@ -183,6 +196,10 @@ in
       export RUSTUP_HOME="$HOME/.rustup"
       export CARGO_HOME="$HOME/.cargo"
       export PATH="$CARGO_HOME/bin:$PATH"
+      # === Rust Toolchain Setup ===
+      export RUSTUP_HOME="$HOME/.rustup"
+      export CARGO_HOME="$HOME/.cargo"
+      export PATH="$CARGO_HOME/bin:$PATH"
       if ! rustc --version &>/dev/null; then
         echo "Installing Rust nightly toolchain..."
         rustup install nightly
@@ -190,7 +207,13 @@ in
       fi
 
       # === Python Dependencies Installation ===
+      # === Python Dependencies Installation ===
       export VENV_DIR="$PROJECT_ROOT/.venv"
+      if [ -z "$VIRTUAL_ENV" ] || [ "$VIRTUAL_ENV" != "$VENV_DIR" ]; then
+          if [ ! -d "$VENV_DIR" ]; then
+              echo "Creating Python virtual environment..."
+              python3 -m venv "$VENV_DIR"
+          fi
       if [ -z "$VIRTUAL_ENV" ] || [ "$VIRTUAL_ENV" != "$VENV_DIR" ]; then
           if [ ! -d "$VENV_DIR" ]; then
               echo "Creating Python virtual environment..."
@@ -200,6 +223,7 @@ in
       fi
       pip install --upgrade pip==24.2 setuptools==75.1.0 wheel==0.44.0
       pip install --no-build-isolation -r "$PROJECT_ROOT/requirements.txt"
+      pip install maturin pytest
       for pkg in analog/library/dep_library/gmid analog/library/dep_library/UWASIC-ALG; do
           if [ -d "$PROJECT_ROOT/$pkg" ]; then
               echo "Installing editable package: $pkg"
@@ -216,8 +240,14 @@ in
              echo "  Removing potentially invalid cache link: ~/.volare"
              rm -rf "$HOME/.volare"
           fi
+          find . -maxdepth 1 -mindepth 1 -type d ! -name "$PDK_VERSION" -exec echo "  Removing old version: {}" \; -exec rm -rf {} \;
+          if [ ! -d "$PDK_ROOT/$PDK" ]; then
+             echo "  Removing potentially invalid cache link: ~/.volare"
+             rm -rf "$HOME/.volare"
+          fi
           cd "$PROJECT_ROOT"
       fi
+      # Enable the PDK with volare
       # Enable the PDK with volare
       volare enable --pdk sky130 "$PDK_VERSION"
 

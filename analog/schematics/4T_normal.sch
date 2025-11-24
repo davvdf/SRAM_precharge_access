@@ -230,7 +230,7 @@ C {devices/code_shown.sym} -660 -200 0 0 {name=s1 only_toplevel=false value=".ic
 .control
   set filetype=ascii
   let run=0
-  dowhile run <= 50
+  dowhile run <= 200
     save all
     tran 100p 100n uic
     remzerovec
@@ -240,7 +240,7 @@ C {devices/code_shown.sym} -660 -200 0 0 {name=s1 only_toplevel=false value=".ic
     let run=run+1
   end
 .endc"}
-C {sky130_fd_pr/corner.sym} -570 130 0 0 {name=CORNER only_toplevel=false corner=tt_mm}
+C {sky130_fd_pr/corner.sym} -570 130 0 0 {name=CORNER only_toplevel=false corner=ff_mm}
 C {sky130_fd_pr/nfet_01v8.sym} -70 -40 0 1 {name=M2
 W=0.84
 L=0.15

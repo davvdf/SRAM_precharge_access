@@ -244,7 +244,7 @@ C {devices/code_shown.sym} -650 -110 0 0 {name=s1 only_toplevel=false value=".ic
     let run=run+1
   end
 .endc"}
-C {sky130_fd_pr/corner.sym} -570 220 0 0 {name=CORNER only_toplevel=false corner=tt_mm}
+C {sky130_fd_pr/corner.sym} -570 220 0 0 {name=CORNER only_toplevel=false corner=ff_mm}
 C {devices/launcher.sym} 600 280 0 0 {name=h5
 descr="load waves" 
 tclcommand="xschem raw_read $netlist_dir/trans_gate_flat.raw tran"
@@ -264,7 +264,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} -140 -40 1 0 {name=M3
-W=0.42
+W=0.4
 L=0.25
 nf=1 
 mult=1
@@ -278,7 +278,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 140 -40 1 0 {name=M4
-W=0.42
+W=0.4
 L=0.25
 nf=1 
 mult=1

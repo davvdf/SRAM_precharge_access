@@ -28,7 +28,7 @@ CBL2 BL GND 300f m=1
 .control
   set filetype=ascii
   let run=0
-  dowhile run <= 100
+  dowhile run <= 200
     save all
     tran 100p 100n uic
     remzerovec
@@ -42,10 +42,10 @@ CBL2 BL GND 300f m=1
 
 .param mc_mm_switch=1
 .param mc_pr_switch=0
-.include /root/.volare/sky130A/libs.tech/ngspice/corners/tt.spice
+.include /root/.volare/sky130A/libs.tech/ngspice/corners/ff.spice
 .include /root/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
 .include /root/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
-.include /root/.volare/sky130A/libs.tech/ngspice/corners/tt/specialized_cells.spice
+.include /root/.volare/sky130A/libs.tech/ngspice/corners/ff/specialized_cells.spice
 
 **** end user architecture code
 **.ends

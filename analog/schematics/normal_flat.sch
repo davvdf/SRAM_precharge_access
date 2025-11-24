@@ -5,15 +5,15 @@ V {}
 S {}
 E {}
 B 2 500 -270 1300 130 {flags=graph
-y1=0.26188204
-y2=2.25638
+y1=0.6607816
+y2=2.6552796
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.0582709e-08
-x2=4.9174533e-08
+x1=1.8665309e-08
+x2=4.8303829e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -34,8 +34,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.0582709e-08
-x2=4.9174533e-08
+x1=1.8665309e-08
+x2=4.8303829e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -56,8 +56,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.0582709e-08
-x2=4.9174533e-08
+x1=1.8665309e-08
+x2=4.8303829e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -236,7 +236,7 @@ C {devices/code_shown.sym} -660 -200 0 0 {name=s1 only_toplevel=false value=".ic
 .control
   set filetype=ascii
   let run=0
-  dowhile run <= 100
+  dowhile run <= 200
     save all
     tran 100p 100n uic
     remzerovec
@@ -246,7 +246,7 @@ C {devices/code_shown.sym} -660 -200 0 0 {name=s1 only_toplevel=false value=".ic
     let run=run+1
   end
 .endc"}
-C {sky130_fd_pr/corner.sym} -570 130 0 0 {name=CORNER only_toplevel=false corner=tt_mm}
+C {sky130_fd_pr/corner.sym} -570 130 0 0 {name=CORNER only_toplevel=false corner=ff_mm}
 C {sky130_fd_pr/nfet_01v8.sym} -70 -40 0 1 {name=M2
 W=0.75
 L=0.25

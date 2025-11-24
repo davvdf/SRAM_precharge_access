@@ -11,9 +11,9 @@ V4 clk GND PULSE(0 1.8 0n 0.2n 0.2n 7.575n 15.15n)
 V5 clk_n GND PULSE(1.8 0 0n 0.2n 0.2n 7.575n 15.15n)
 XM1 INV INV_N GND GND sky130_fd_pr__nfet_01v8 L=0.25 W=0.75 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM3 INV_N WL BL_N GND sky130_fd_pr__nfet_01v8 L=0.25 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM4 BL WL INV GND sky130_fd_pr__nfet_01v8 L=0.25 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
+XM3 INV_N WL BL_N GND sky130_fd_pr__nfet_01v8 L=0.25 W=0.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM4 BL WL INV GND sky130_fd_pr__nfet_01v8 L=0.25 W=0.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 XM5 VDD_div2 clk BL GND sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
@@ -47,10 +47,10 @@ XM2 INV_N INV GND GND sky130_fd_pr__nfet_01v8 L=0.25 W=0.75 nf=1 ad='int((nf+1)/
 
 .param mc_mm_switch=1
 .param mc_pr_switch=0
-.include /root/.volare/sky130A/libs.tech/ngspice/corners/tt.spice
+.include /root/.volare/sky130A/libs.tech/ngspice/corners/ff.spice
 .include /root/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
 .include /root/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
-.include /root/.volare/sky130A/libs.tech/ngspice/corners/tt/specialized_cells.spice
+.include /root/.volare/sky130A/libs.tech/ngspice/corners/ff/specialized_cells.spice
 
 **** end user architecture code
 **.ends

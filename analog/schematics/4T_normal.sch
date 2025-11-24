@@ -338,13 +338,13 @@ tclcommand="xschem raw_read $netlist_dir/4T_normal.raw tran"
 }
 C {capa.sym} -180 160 0 0 {name=CBL1
 m=1
-value=150f
+value=300f
 footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} -180 190 0 0 {name=l12 lab=GND}
 C {capa.sym} 180 160 0 0 {name=CBL2
 m=1
-value=150f
+value=300f
 footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} 180 190 0 0 {name=l8 lab=GND}

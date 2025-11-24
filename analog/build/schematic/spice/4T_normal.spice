@@ -1,4 +1,4 @@
-** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/4T_normal.sch
+** sch_path: /workspace/analog/schematics/4T_normal.sch
 **.subckt 4T_normal
 XM1 INV INV_N GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=0.84 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
@@ -22,8 +22,8 @@ XM8 INV_N INV VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1 ad='int((nf+1)/
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 XM9 INV INV_N VDD VDD sky130_fd_pr__pfet_01v8 L=0.15 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-CBL1 BL_N GND 150f m=1
-CBL2 BL GND 150f m=1
+CBL1 BL_N GND 300f m=1
+CBL2 BL GND 300f m=1
 **** begin user architecture code
 
 .ic V(inv)=1.8 V(inv_n)=0
@@ -44,10 +44,10 @@ CBL2 BL GND 150f m=1
 
 .param mc_mm_switch=1
 .param mc_pr_switch=0
-.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/tt.spice
-.include /home/david/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
-.include /home/david/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
-.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/tt/specialized_cells.spice
+.include /root/.volare/sky130A/libs.tech/ngspice/corners/tt.spice
+.include /root/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
+.include /root/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
+.include /root/.volare/sky130A/libs.tech/ngspice/corners/tt/specialized_cells.spice
 
 **** end user architecture code
 **.ends

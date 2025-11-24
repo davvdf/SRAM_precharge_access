@@ -5,15 +5,15 @@ V {}
 S {}
 E {}
 B 2 510 -180 1310 220 {flags=graph
-y1=-0.52698217
-y2=2.7816505
+y1=0.13474436
+y2=3.443377
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=8.7012368e-09
-x2=4.4760703e-08
+x1=-6.268832e-09
+x2=5.6214916e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -34,8 +34,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=8.7012368e-09
-x2=4.4760703e-08
+x1=-6.268832e-09
+x2=5.6214916e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -56,8 +56,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=8.7012368e-09
-x2=4.4760703e-08
+x1=-6.268832e-09
+x2=5.6214916e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -208,13 +208,13 @@ C {devices/lab_pin.sym} 50 430 3 0 {name=p9 sig_type=std_logic lab=clk}
 C {devices/lab_pin.sym} -10 340 2 0 {name=p7 sig_type=std_logic lab=VDD_div2}
 C {capa.sym} 130 540 0 0 {name=CBL
 m=1
-value=100f
+value=200f
 footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} 130 570 0 0 {name=l11 lab=GND}
 C {capa.sym} -150 540 0 0 {name=CBL1
 m=1
-value=100f
+value=200f
 footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} -150 570 0 0 {name=l12 lab=GND}
@@ -250,7 +250,7 @@ descr="load waves"
 tclcommand="xschem raw_read $netlist_dir/trans_gate_flat.raw tran"
 }
 C {sky130_fd_pr/nfet_01v8.sym} 60 50 0 0 {name=M1
-W=0.5
+W=0.75
 L=0.25
 nf=1 
 mult=1
@@ -264,7 +264,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} -140 -40 1 0 {name=M3
-W=0.75
+W=0.42
 L=0.25
 nf=1 
 mult=1
@@ -278,7 +278,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 140 -40 1 0 {name=M4
-W=0.75
+W=0.42
 L=0.25
 nf=1 
 mult=1
@@ -293,7 +293,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 50 410 3 0 {name=M5
 L=0.15
-W=1.5
+W=2
 nf=1 
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -307,7 +307,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} -70 410 3 0 {name=M6
 L=0.15
-W=1.5
+W=2
 nf=1 
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -321,7 +321,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 50 230 1 0 {name=M7
 L=0.15
-W=2
+W=3
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -335,7 +335,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} -70 230 1 0 {name=M8
 L=0.15
-W=2
+W=3
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -362,7 +362,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} -60 50 0 1 {name=M2
-W=0.5
+W=0.75
 L=0.25
 nf=1 
 mult=1

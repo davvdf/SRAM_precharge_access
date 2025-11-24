@@ -5,15 +5,15 @@ V {}
 S {}
 E {}
 B 2 500 -270 1300 130 {flags=graph
-y1=0.6607816
-y2=2.6552796
+y1=-0.1370176
+y2=1.8574804
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.8665309e-08
-x2=4.8303829e-08
+x1=-4.0216616e-09
+x2=5.7436773e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -34,8 +34,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.8665309e-08
-x2=4.8303829e-08
+x1=-4.0216616e-09
+x2=5.7436773e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -56,8 +56,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=1.8665309e-08
-x2=4.8303829e-08
+x1=-4.0216616e-09
+x2=5.7436773e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -188,7 +188,7 @@ device=resistor
 m=1}
 C {sky130_fd_pr/nfet_01v8.sym} -150 -130 1 0 {name=M3
 W=0.42
-L=0.25
+L=0.3
 nf=1 
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -202,7 +202,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 130 -130 3 1 {name=M4
 W=0.42
-L=0.25
+L=0.3
 nf=1 
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -232,7 +232,8 @@ C {gnd.sym} 280 320 0 0 {name=l18 lab=GND}
 C {devices/vsource.sym} 280 30 0 0 {name=V2 value=0.9 savecurrent=false}
 C {devices/vsource.sym} 280 160 0 0 {name=V3 value="PULSE(0 1.8 15.15n 1p 1p 30n 40n 1)" savecurrent=false}
 C {devices/vsource.sym} 280 290 0 0 {name=V4 value="PULSE(0 1.8 0n 0.2n 0.2n 7.575n 15.15n)" savecurrent=false}
-C {devices/code_shown.sym} -660 -200 0 0 {name=s1 only_toplevel=false value=".ic V(inv)=1.8 V(inv_n)=0
+C {devices/code_shown.sym} -660 -200 0 0 {name=s1 only_toplevel=false value=".temp 120
+.ic V(inv)=1.8 V(inv_n)=0
 .control
   set filetype=ascii
   let run=0
@@ -310,7 +311,7 @@ C {devices/lab_pin.sym} 60 120 2 0 {name=p7 sig_type=std_logic lab=BL}
 C {devices/lab_pin.sym} -60 120 0 0 {name=p8 sig_type=std_logic lab=BL_N}
 C {devices/lab_pin.sym} -60 330 0 0 {name=p9 sig_type=std_logic lab=VDD_div2}
 C {devices/lab_pin.sym} 0 330 2 0 {name=p10 sig_type=std_logic lab=clk}
-C {devices/launcher.sym} 630 190 0 0 {name=h5
+C {devices/launcher.sym} 640 190 0 0 {name=h5
 descr="load waves" 
 tclcommand="xschem raw_read $netlist_dir/normal_flat.raw tran"
 }

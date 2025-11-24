@@ -1,12 +1,12 @@
-** sch_path: /workspace/analog/schematics/normal_flat.sch
+** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/normal_flat.sch
 **.subckt normal_flat
 XM1 INV INV_N GND GND sky130_fd_pr__nfet_01v8 L=0.25 W=0.75 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 R1 VDD INV_N 50k m=1
 R2 VDD INV 50k m=1
-XM3 INV_N WL BL_N GND sky130_fd_pr__nfet_01v8 L=0.25 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM4 INV WL BL GND sky130_fd_pr__nfet_01v8 L=0.25 W=0.42 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
+XM3 INV_N WL BL_N GND sky130_fd_pr__nfet_01v8 L=0.4 W=0.56 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM4 INV WL BL GND sky130_fd_pr__nfet_01v8 L=0.4 W=0.56 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 V1 VDD GND 1.8
 V2 VDD_div2 GND 0.9
@@ -24,6 +24,7 @@ CBL1 BL_N GND 300f m=1
 CBL2 BL GND 300f m=1
 **** begin user architecture code
 
+.temp 120
 .ic V(inv)=1.8 V(inv_n)=0
 .control
   set filetype=ascii
@@ -42,10 +43,10 @@ CBL2 BL GND 300f m=1
 
 .param mc_mm_switch=1
 .param mc_pr_switch=0
-.include /root/.volare/sky130A/libs.tech/ngspice/corners/ff.spice
-.include /root/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
-.include /root/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
-.include /root/.volare/sky130A/libs.tech/ngspice/corners/ff/specialized_cells.spice
+.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/ff.spice
+.include /home/david/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
+.include /home/david/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
+.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/ff/specialized_cells.spice
 
 **** end user architecture code
 **.ends

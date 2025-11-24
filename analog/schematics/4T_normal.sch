@@ -12,8 +12,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=3.9414679e-09
-x2=6.8314371e-08
+x1=-1.16724e-08
+x2=5.2700505e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -34,8 +34,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=3.9414679e-09
-x2=6.8314371e-08
+x1=-1.16724e-08
+x2=5.2700505e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -56,8 +56,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=3.9414679e-09
-x2=6.8314371e-08
+x1=-1.16724e-08
+x2=5.2700505e-08
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -214,7 +214,7 @@ C {devices/lab_pin.sym} -50 -90 1 0 {name=p3 sig_type=std_logic lab=INV_N}
 C {devices/lab_pin.sym} 0 -120 1 0 {name=p4 sig_type=std_logic lab=INV}
 C {devices/lab_pin.sym} -180 -110 0 0 {name=p5 sig_type=std_logic lab=BL_N}
 C {devices/lab_pin.sym} 160 -110 2 0 {name=p6 sig_type=std_logic lab=BL}
-C {devices/vsource.sym} 280 -100 0 0 {name=V1 value=1.8 savecurrent=false}
+C {devices/vsource.sym} 280 -100 0 0 {name=V1 value=1.75 savecurrent=false}
 C {vdd.sym} 280 -130 0 0 {name=l9 lab=VDD}
 C {gnd.sym} 280 -70 0 0 {name=l10 lab=GND}
 C {devices/lab_pin.sym} 280 0 2 0 {name=p12 sig_type=std_logic lab=VDD_div2}
@@ -338,13 +338,13 @@ tclcommand="xschem raw_read $netlist_dir/4T_normal.raw tran"
 }
 C {capa.sym} -180 160 0 0 {name=CBL1
 m=1
-value=300f
+value=500f
 footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} -180 190 0 0 {name=l12 lab=GND}
 C {capa.sym} 180 160 0 0 {name=CBL2
 m=1
-value=300f
+value=500f
 footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} 180 190 0 0 {name=l8 lab=GND}

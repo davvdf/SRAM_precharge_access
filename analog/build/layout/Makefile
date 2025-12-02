@@ -10,7 +10,7 @@ layout:
 	cd ../../layout && ( \
 		echo "set TOP_LEVEL_CELL_NAME $(TOP_LAYOUT)"; \
 		cat ../build/layout/tinytapeout_template.tcl; \
-	) | $(MAGIC) -rcfile ../build/layout/sky130A.magicrc -T sky130A -noconsole
+	) | $(MAGIC) -rcfile ../build/layout/sky130A.magicrc -T sky130A
 	@echo "Exporting to parent..."
 	@if [ -n "$(PARENT_OUTPUT_DIR)" ]; then \
 		echo "Copying final layout to parent project..."; \

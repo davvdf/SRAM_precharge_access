@@ -1,0 +1,15 @@
+* SPICE3 file created from SRAM_precharge.ext - technology: sky130A
+
+X0 m1_605_760# VSS BL VSUBS sky130_fd_pr__nfet_01v8 ad=2.9 pd=20.58 as=2.9 ps=20.58 w=10 l=0.15
+X1 BL VSS VDD VSUBS sky130_fd_pr__nfet_01v8 ad=1.45 pd=10.58 as=1.45 ps=10.58 w=5 l=0.15
+X2 VDD VSS m1_605_760# VSUBS sky130_fd_pr__nfet_01v8 ad=2.9 pd=21.16 as=4.35 ps=31.16 w=5 l=0.15
+C0 VSS m1_605_760# 0.31406f
+C1 VSS VDD 0.14207f
+C2 BL m1_605_760# 1.59253f
+C3 BL VDD 0.94859f
+C4 m1_605_760# VDD 0.94913f
+C5 VSS BL 0.31407f
+C6 VSS VSUBS 2.25829f
+C7 VDD VSUBS 1.51214f
+C8 m1_605_760# VSUBS 1.33786f **FLOATING
+C9 BL VSUBS 1.33784f

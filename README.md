@@ -178,7 +178,7 @@ We plan on adopting the following approach to validating our circuit once it has
 - connect BL and BL_N to oscilloscope and confirm that they get set to their expected voltages
 
 We can then measure the following based on the oscilloscope output:
-- **noise margins** - measure any noise or deviation from expected voltage values (not sure if oscilloscope has tight enough tolerances)
+- **noise margins** - measure any noise or deviation from expected voltage values
 - **speed checks** - time required for bit lines to reach their expected voltages
 - **charge injection** - look for voltages spikes at the bit lines when CLK switches off
 - **PVT corners** - Process corner is fixed and temperature will be hard to alter, but we can range our voltage to determine our worst case switching speed

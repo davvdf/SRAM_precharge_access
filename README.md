@@ -16,17 +16,30 @@ This project's goal is to design and implement the precharge circuitry needed fo
 
 ## Workflow
 
-This project borrows heavily from the UW ASIC design team workflow. We opted for this approach as it was ///. The design utilized the SkyWater SKY130 PDK, an open-source process design kit that provides device models, standard cell libraries, and layout design rules.  
+This project borrows heavily from the UW ASIC design team workflow. We opted for this approach as it was already in use and tested thoroughly. The design utilized the SkyWater SKY130 PDK, an open-source process design kit that provides device models, standard cell libraries, and layout design rules.  
 
-We utilized Xschem for ///
+We used Xschem for schematic capture and running simulations with ngspice.
 
 To validate our design, we used ngspice to perform transient and DC simulations. For physical layout, we used Magic VLSI to convert our schematics into a manufacturable layout. 
 
 
 ## Circuit Design
 
+Two different circuit topologies were tested, traditional clocked NMOS according to textbook advice and experimental transmission gate based topology.
 
+For transmission gate, complementary gates were sized 3 um for PFET and 2 um for NFET to account for mobility differences between each FET, per device physics. This enabled symmetrical pulling up and down of the bitlines relative to Vdd/2
+
+Problems: voltage spike due to charge injection, however differential values do not fluctuate
+
+Testing showed that the equalization transistor in the middle determined speed, and precharge transistors determined circuit behaviour with bitcell
 ## Spice Validation
+
+Ran speed checks
+Ran different cases of initial conditions
+Ran PVT corners
+Tested with 6T and 4T bitcells, NMOS was far more stable and passed Monte Carlo simulation with flying colors, hitting 500mV differential target easily within allocated time (less than 7.5ns or half a clock cycle)
+
+Transmission gate was tested, but classical method was favoured over simplicity, and area/pin requirements
 
 
 ## Layout

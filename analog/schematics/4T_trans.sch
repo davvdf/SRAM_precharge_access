@@ -256,7 +256,7 @@ C {devices/code_shown.sym} -660 -200 0 0 {name=s1 only_toplevel=false value=".ic
     let run=run+1
   end
 .endc"}
-C {sky130_fd_pr/corner.sym} -570 130 0 0 {name=CORNER only_toplevel=false corner=tt_mm}
+C {sky130_fd_pr/corner.sym} -570 130 0 0 {name=CORNER only_toplevel=false corner=ff_mm}
 C {sky130_fd_pr/nfet_01v8.sym} -70 -40 0 1 {name=M2
 W=0.84
 L=0.15
@@ -301,7 +301,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 20 330 3 0 {name=M5
 L=0.15
-W=1
+W=4
 nf=1 
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -315,7 +315,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} -100 330 3 0 {name=M6
 L=0.15
-W=1
+W=4
 nf=1 
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -329,7 +329,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 20 150 1 0 {name=M7
 L=0.15
-W=2
+W=6
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -343,7 +343,7 @@ spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} -100 150 1 0 {name=M10
 L=0.15
-W=2
+W=6
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -380,13 +380,13 @@ C {devices/lab_pin.sym} 20 350 3 0 {name=p9 sig_type=std_logic lab=clk}
 C {devices/lab_pin.sym} -40 260 2 0 {name=p7 sig_type=std_logic lab=VDD_div2}
 C {capa.sym} 100 460 0 0 {name=CBL
 m=1
-value=150f
+value=300f
 footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} 100 490 0 0 {name=l11 lab=GND}
 C {capa.sym} -180 460 0 0 {name=CBL1
 m=1
-value=150f
+value=300f
 footprint=1206
 device="ceramic capacitor"}
 C {devices/gnd.sym} -180 490 0 0 {name=l12 lab=GND}

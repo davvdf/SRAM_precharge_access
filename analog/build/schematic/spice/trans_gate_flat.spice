@@ -1,10 +1,10 @@
-** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/trans_gate_flat.sch
+** sch_path: /workspace/analog/schematics/trans_gate_flat.sch
 **.subckt trans_gate_flat
 R1 VDD INV_N 50k m=1
 R2 VDD INV 50k m=1
 V1 VDD GND 1.8
-CBL BL GND 200f m=1
-CBL1 BL_N GND 200f m=1
+CBL BL GND 300f m=1
+CBL1 BL_N GND 300f m=1
 V2 VDD_div2 GND 0.9
 V3 WL GND PULSE(0 1.8 15.15n 1p 1p 30n 40n 1)
 V4 clk GND PULSE(0 1.8 0n 0.2n 0.2n 7.575n 15.15n)
@@ -15,13 +15,13 @@ XM3 INV_N WL BL_N GND sky130_fd_pr__nfet_01v8 L=0.25 W=0.4 nf=1 ad='int((nf+1)/2
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 XM4 BL WL INV GND sky130_fd_pr__nfet_01v8 L=0.25 W=0.4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM5 VDD_div2 clk BL GND sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
+XM5 VDD_div2 clk BL GND sky130_fd_pr__nfet_01v8 L=0.15 W=4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM6 BL_N clk VDD_div2 GND sky130_fd_pr__nfet_01v8 L=0.15 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
+XM6 BL_N clk VDD_div2 GND sky130_fd_pr__nfet_01v8 L=0.15 W=4 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM7 VDD_div2 clk_n BL VDD sky130_fd_pr__pfet_01v8 L=0.15 W=3 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
+XM7 VDD_div2 clk_n BL VDD sky130_fd_pr__pfet_01v8 L=0.15 W=6 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM8 BL_N clk_n VDD_div2 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=3 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
+XM8 BL_N clk_n VDD_div2 VDD sky130_fd_pr__pfet_01v8 L=0.15 W=6 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
 + pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 XM9 BL clk BL_N GND sky130_fd_pr__nfet_01v8 L=0.15 W=7 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
@@ -47,10 +47,10 @@ XM2 INV_N INV GND GND sky130_fd_pr__nfet_01v8 L=0.25 W=0.75 nf=1 ad='int((nf+1)/
 
 .param mc_mm_switch=1
 .param mc_pr_switch=0
-.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/ff.spice
-.include /home/david/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
-.include /home/david/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
-.include /home/david/.volare/sky130A/libs.tech/ngspice/corners/ff/specialized_cells.spice
+.include /root/.volare/sky130A/libs.tech/ngspice/corners/ff.spice
+.include /root/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical.spice
+.include /root/.volare/sky130A/libs.tech/ngspice/r+c/res_typical__cap_typical__lin.spice
+.include /root/.volare/sky130A/libs.tech/ngspice/corners/ff/specialized_cells.spice
 
 **** end user architecture code
 **.ends

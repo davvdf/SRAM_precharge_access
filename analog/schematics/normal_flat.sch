@@ -237,7 +237,7 @@ C {devices/code_shown.sym} -660 -200 0 0 {name=s1 only_toplevel=false value=".te
 .control
   set filetype=ascii
   let run=0
-  dowhile run <= 200
+  dowhile run <= 100
     save all
     tran 100p 100n uic
     remzerovec
@@ -263,7 +263,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 40 250 0 0 {name=M5
-W=5
+W=10
 L=0.15
 nf=1 
 mult=1
@@ -277,7 +277,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} -40 250 0 1 {name=M6
-W=5
+W=10
 L=0.15
 nf=1 
 mult=1

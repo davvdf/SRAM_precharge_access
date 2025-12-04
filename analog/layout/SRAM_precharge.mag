@@ -1,7 +1,7 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1764652891
+timestamp 1764873183
 << locali >>
 rect 299 85 437 119
 rect 719 85 857 119
@@ -23,7 +23,7 @@ rect 141 85 1015 119
 rect 80 319 140 380
 rect 1013 320 1073 381
 << metal2 >>
-rect 40 381 1114 400
+rect 40 381 1114 399
 rect 40 380 1013 381
 rect 40 319 80 380
 rect 140 320 1013 380
@@ -49,8 +49,8 @@ flabel space 599 760 977 960 0 FreeSans 160 0 0 0 BL_N
 port 3 nsew
 flabel metal1 141 2195 1015 2230 0 FreeSans 160 0 0 0 CLK
 port 1 nsew
-flabel metal2 40 300 1114 400 0 FreeSans 160 0 0 0 VDD
-port 4 nsew
 flabel metal1 141 85 1015 119 0 FreeSans 160 0 0 0 VSS
 port 5 nsew
+flabel metal2 40 300 1114 399 0 FreeSans 160 0 0 0 0.5VDD
+port 6 nsew
 << end >>

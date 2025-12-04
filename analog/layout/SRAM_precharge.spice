@@ -1,15 +1,15 @@
-* SPICE3 file created from SRAM_precharge.ext - technology: sky130A
+* NGSPICE file created from SRAM_precharge.ext - technology: sky130A
 
 X0 m1_605_760# VSS BL VSUBS sky130_fd_pr__nfet_01v8 ad=2.9 pd=20.58 as=2.9 ps=20.58 w=10 l=0.15
-X1 BL VSS VDD VSUBS sky130_fd_pr__nfet_01v8 ad=1.45 pd=10.58 as=1.45 ps=10.58 w=5 l=0.15
-X2 VDD VSS m1_605_760# VSUBS sky130_fd_pr__nfet_01v8 ad=2.9 pd=21.16 as=4.35 ps=31.16 w=5 l=0.15
-C0 VSS m1_605_760# 0.31406f
-C1 VSS VDD 0.14207f
-C2 BL m1_605_760# 1.59253f
-C3 BL VDD 0.94859f
-C4 m1_605_760# VDD 0.94913f
-C5 VSS BL 0.31407f
+X1 BL VSS 0.5VDD VSUBS sky130_fd_pr__nfet_01v8 ad=1.45 pd=10.58 as=1.45 ps=10.58 w=5 l=0.15
+X2 0.5VDD VSS m1_605_760# VSUBS sky130_fd_pr__nfet_01v8 ad=2.9 pd=21.16 as=4.35 ps=31.16 w=5 l=0.15
+C0 0.5VDD BL 0.94766f
+C1 0.5VDD VSS 0.14192f
+C2 m1_605_760# 0.5VDD 0.94822f
+C3 BL VSS 0.31407f
+C4 m1_605_760# BL 1.59253f
+C5 m1_605_760# VSS 0.31406f
 C6 VSS VSUBS 2.25829f
-C7 VDD VSUBS 1.51214f
-C8 m1_605_760# VSUBS 1.33786f **FLOATING
+C7 0.5VDD VSUBS 1.51136f
+C8 m1_605_760# VSUBS 1.33786f $ **FLOATING
 C9 BL VSUBS 1.33784f

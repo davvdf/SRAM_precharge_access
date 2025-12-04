@@ -17,17 +17,17 @@ lab=clk}
 N 0 -40 0 0 {
 lab=clk}
 N -60 30 -60 50 {
-lab=Vdd/2}
+lab=VDD_div2}
 N 60 30 60 50 {
-lab=Vdd/2}
+lab=VDD_div2}
 N -60 50 60 50 {
-lab=Vdd/2}
+lab=VDD_div2}
 N 60 -130 60 -80 {
 lab=BL}
 N -60 -130 -60 -80 {
 lab=BL_N}
 N -60 50 -60 80 {
-lab=Vdd/2}
+lab=VDD_div2}
 N 0 0 0 80 {
 lab=clk}
 N -180 0 -60 0 {
@@ -84,9 +84,18 @@ spiceprefix=X
 }
 C {iopin.sym} 60 -130 0 0 {name=p3 lab=BL}
 C {iopin.sym} -60 -130 2 0 {name=p4 lab=BL_N}
-C {ipin.sym} -60 80 0 0 {name=p2 lab=Vdd/2}
 C {ipin.sym} 0 80 2 0 {name=p1 lab=clk
 }
 C {devices/gnd.sym} -180 0 0 0 {name=l1 lab=GND}
 C {devices/gnd.sym} 150 0 0 0 {name=l2 lab=GND}
 C {devices/gnd.sym} 100 -80 0 0 {name=l3 lab=GND}
+C {devices/lab_pin.sym} -350 90 2 0 {name=p12 sig_type=std_logic lab=VDD_div2}
+C {gnd.sym} -350 150 0 0 {name=l14 lab=GND}
+C {devices/vsource.sym} -350 120 0 0 {name=V2 value=0.9 savecurrent=false}
+C {devices/lab_pin.sym} -60 80 0 0 {name=p2 sig_type=std_logic lab=VDD_div2}
+C {devices/lab_pin.sym} 140 100 2 0 {name=p14 sig_type=std_logic lab=clk}
+C {gnd.sym} 140 160 0 0 {name=l18 lab=GND}
+C {devices/vsource.sym} 140 130 0 0 {name=V4 value="PULSE(0 1.8 0n 0.2n 0.2n 7.575n 15.15n)" savecurrent=false}
+C {devices/code_shown.sym} 470 -30 0 0 {name=s1 only_toplevel=false value=".ic V(BL)=1.8 V(BL_N)=0
+.tran 100p 30n"}
+C {sky130_fd_pr/corner.sym} 550 300 0 0 {name=CORNER only_toplevel=false corner=tt}

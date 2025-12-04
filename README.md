@@ -43,6 +43,7 @@ As a result, we opted to stick to the clocked NMOS approach with the following p
 | Bitline voltages?  |    | 
 | Static noise margins?  |    | 
 
+Circuit schematics (including testbenches used for spice simulations) can be found in `analog/schematics/`.
 
 ## Spice Validation
 
@@ -67,6 +68,7 @@ We also ran tests for different initial conditions and tested with 6T and 4T bit
 
 We also tested the transmission gate topology, but decided to go with the classical method due to simplicity and area/pin requirements.
 
+Spice results can be found in `analog/build/schematic/spice`.
 
 ## Layout
 <div style="display: flex; align-items: flex-start;">

@@ -23,13 +23,26 @@ We used Xschem for schematic capture and running simulations with ngspice. To va
 
 ## Circuit Design
 
-Two different circuit topologies were tested, traditional clocked NMOS according to textbook advice and experimental transmission gate based topology.
-
-For transmission gate, complementary gates were sized 3 um for PFET and 2 um for NFET to account for mobility differences between each FET, per device physics. This enabled symmetrical pulling up and down of the bitlines relative to Vdd/2
+We tested 2 different circuit topologies: traditional clocked NMOS and an experimental transmission gate-based topology: 
+<div style="display: flex; align-items: flex-start;">
+   <img src="clocked_nmos_diagram.png" alt="A clocked NMOS precharge circuit" height="175" style="margin-right: 10px; margin-bottom: 10px"/>
+   <img src="transmission_gate_diagram.png" alt="A transmission gate circuit" height="175" />
+</div>   
+For the transmission gate circuit, complementary gates were sized 3 μm for PFET and 2 μm for NFET to account for mobility differences between each FET, per device physics. This enabled symmetrical pulling up and down of the bitlines relative to Vdd/2.  
 
 Problems: voltage spike due to charge injection, however differential values do not fluctuate
 
 Testing showed that the equalization transistor in the middle determined speed, and precharge transistors determined circuit behaviour with bitcell
+
+As a result, we opted to stick to the clocked NMOS approach with the following parameters:
+
+| Parameter | Value |
+| :------- | :------: |
+| Max Clock Speed     | 66 MHz   |
+| Supply Voltage (Vdd)  | 1.8 V   | 
+| Bitline voltages?  |    | 
+| Static noise margins?  |    | 
+
 
 ## Spice Validation
 

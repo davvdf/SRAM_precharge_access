@@ -46,12 +46,26 @@ As a result, we opted to stick to the clocked NMOS approach with the following p
 
 ## Spice Validation
 
-Ran speed checks
-Ran different cases of initial conditions
-Ran PVT corners
-Tested with 6T and 4T bitcells, NMOS was far more stable and passed Monte Carlo simulation with flying colors, hitting 500mV differential target easily within allocated time (less than 7.5ns or half a clock cycle)
+We ran the following simulations/tests to determine design parameter values and validate circuit functionality:
 
-Transmission gate was tested, but classical method was favoured over simplicity, and area/pin requirements
+## Summary: Non-Functional Test Suite
+
+| Test Type          | What It Checks              | Acceptance Criteria          |
+|--------------------|-----------------------------|------------------------------|
+| Monte Carlo        | Manufacturing variation     | 99.7% yield within timing    |
+| Noise Analysis     | Thermal/flicker noise       | Input noise << 10 mV         |
+| Charge Injection   | Switching transients        | < 5 mV glitch                |
+| PVT Corners        | Worst-case operation        | Meet timing at SS/125 °C     |
+| Mismatch           | Transistor pairing          | Offset < 10 mV               |
+| Aging (BTI/HCI)    | Long-term reliability       | 10% margin after 10 years    |
+| EM                 | Current density             | < 1 mA/μm peak               |
+| Parametric Sweep   | Design optimization         | Find optimal W/L             |
+| Speed Checks       | Precharge/settling time     | Meet target cycle timing     |
+| Capacitance Sweep  | BL/BL_N capacitive loading  | Stable precharge across range |
+
+We also ran tests for different initial conditions and tested with 6T and 4T bitcells. We observed that NMOS was the most stable variant and passed Monte Carlo simulation with flying colors, hitting 500mV differential target easily within allocated time (less than 7.5ns or half a clock cycle)
+
+We also tested the transmission gate topology, but decided to go with the classical method due to simplicity and area/pin requirements.
 
 
 ## Layout
@@ -60,11 +74,14 @@ Transmission gate was tested, but classical method was favoured over simplicity,
    <div>
    <p>
    The layout uses 3 SKY130 NFET transistors: 1 10μm x 0.15μm and 2 5μm x 0.15μm mosfets. These device sizes were chosen through testing and simulations done in ngspice to determine optimal widths/lengths. The footprint of the circuit is 6.310μm x 12.100μm (76.351 μm²).  
-   
+   </p>
+   <p>
    To ensure that the layout would be manufacturable and avoid fabrication errors, we verified it using Design Rule Checks (DRC). This step ensures that all drawn geometries satisfy the SKY130 process constraints, such as minimum spacing and contact overlaps. 
-
+   </p>
+   <p>
    Once the layout passed DRC, we performed Layout vs Schematic (LVS) checks. LVS compares the extracted netlist from the layout with the original schematic to ensure that both represent the same circuit. This step verifies that all circuit components were replicated correctly in the layout, and ensures that no shorts or open circuits were introduced during the layout step.
-
+   </p>
+   <p>
    Finally, we generated a Spice netlist from the layout. This allows us to simulate the effects of parasitics on the final layout and get a better idea of how the circuit will perform in the real world. To extract the Spice netlist, we ran the following commands:
    </p>
    </div>

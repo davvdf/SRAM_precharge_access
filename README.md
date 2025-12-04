@@ -95,15 +95,18 @@ Further testing for settling time was done with bitline capcitance sweep, and PV
 
 Capacitance Sweep:
 ``` 
-.ic V(BL)=0V V(BL_N)=1.8V .control let c_bl = 200f while c_bl <= 350f reset alter CBL = c_bl alter CBLB = c_bl 
-
-tran 0.01n 20n 
-
-meas tran t_pch WHEN V(BL)=0.882 CROSS=1 print c_bl t_pch >> cap_sweep.txt 
-
-let c_bl = c_bl + 25f 
-
-end .endc 
+.ic V(BL)=0V V(BL_N)=1.8V 
+.control 
+   let c_bl = 200f 
+   while c_bl <= 350f 
+   reset 
+   alter CBL = c_bl 
+   alter CBLB = c_bl 
+   tran 0.01n 20n 
+   meas tran t_pch WHEN V(BL)=0.882 CROSS=1 print c_bl t_pch >> cap_sweep.txt 
+   let c_bl = c_bl + 25f 
+   end 
+.endc 
 ```
 
 PVT corner testing results are in `analog/build/schematic/spice/corners.txt`, worst case settling time was 3ns, well within allocated 5ns budget

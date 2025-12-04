@@ -1,29 +1,29 @@
 ** sch_path: /home/david/Documents/SRAM_precharge_access/analog/schematics/tb.sch
 **.subckt tb
-x1 BL_N BL net1 net2 SRAM_precharge
-C1 BL_N GND 240f m=1
-C2 BL GND 240f m=1
+CBL_N BL_N GND 240f m=1
+CBL BL GND 240f m=1
 V3 net1 GND PULSE(0 1.8 0n 0.1n 0.1n 7.5n 15.15n)
 V4 net2 GND 0.9
+x1 BL_N BL net1 net2 SRAM_precharge
 **** begin user architecture code
 
-.tran 100p 20n
-.ic V(BL)=0.895 V(BL_n)=0.905
-.save all
-
+ .ic V(BL)=0V V(BL_N)=1.8V
 .control
-  let mc_runs = 3      ; number of runs (try 3 to keep plots readable)
-  let run = 1
+let c_bl = 200f
+while c_bl <= 350f
+reset
+alter CBL = c_bl
+alter CBLB = c_bl
 
-  dowhile run <= mc_runs
-    reset
-    run
-    let new_val = v(BL_n) - v(BL)
-    plot new_val title "Run @run" 
-    let run = run + 1
-  end
+tran 0.01n 20n
+
+meas tran t_pch WHEN V(BL)=0.882 CROSS=1
+print c_bl t_pch >> cap_sweep.txt
+
+let c_bl = c_bl + 25f
+
+end
 .endc
-
 
 
 .param mc_mm_switch=1
@@ -44,15 +44,12 @@ V4 net2 GND 0.9
 *.iopin BL_N
 *.ipin Vdd/2
 *.ipin clk
-XM1 BL clk Vdd/2 GND sky130_fd_pr__nfet_01v8 L=0.15 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
-+ sa=0 sb=0 sd=0 mult=1 m=1
-XM2 BL_N clk Vdd/2 GND sky130_fd_pr__nfet_01v8 L=0.15 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
-+ sa=0 sb=0 sd=0 mult=1 m=1
-XM3 BL clk BL_N GND sky130_fd_pr__nfet_01v8 L=0.15 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
-+ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
-+ sa=0 sb=0 sd=0 mult=1 m=1
+XM1 BL clk Vdd/2 GND sky130_fd_pr__nfet_01v8 L=0.15 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM2 BL_N clk Vdd/2 GND sky130_fd_pr__nfet_01v8 L=0.15 W=5 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
+XM3 BL clk BL_N GND sky130_fd_pr__nfet_01v8 L=0.15 W=10 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 .ends
 
 .GLOBAL GND

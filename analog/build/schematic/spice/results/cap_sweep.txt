@@ -1,0 +1,14 @@
+const.c_bl = 2.000000e-13
+tran1.t_pch = 1.985884e-10
+const.c_bl = 2.250000e-13
+tran2.t_pch = 2.206470e-10
+const.c_bl = 2.500000e-13
+tran3.t_pch = 2.401197e-10
+const.c_bl = 2.750000e-13
+tran4.t_pch = 2.588198e-10
+const.c_bl = 3.000000e-13
+tran5.t_pch = 2.832519e-10
+const.c_bl = 3.250000e-13
+tran6.t_pch = 3.276416e-10
+const.c_bl = 3.500000e-13
+tran7.t_pch = 3.760879e-10

@@ -119,8 +119,8 @@ Thermal noise testing was also run with:
 After determining the design of the isolated circuitry was acceptable, testing was moved on to integration testing with bitcells, along with Monte Carlo Analysis to determine stability. Here is where the transmission gate topology failed, it was not stable in the worst case corner (ff_mm) which resulted in a destructive read. A passing run is where a read operation does not flip the SRAM inverters.
 
 <div style="display: flex; align-items: flex-start;">
-   <img src="passing.png" alt="Passing run" height="260" style="margin-right: 10px; margin-bottom: 10px"/>
-   <img src="failing.png" alt="A transmission gate circuit" height="260" />
+   <img src="passing.png" alt="Passing run" height="225" style="margin-right: 10px; margin-bottom: 10px"/>
+   <img src="failing.png" alt="A transmission gate circuit" height="225" />
 </div> 
 
 ### Power Draw

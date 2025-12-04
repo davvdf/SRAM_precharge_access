@@ -88,7 +88,7 @@ After initial testing of settling time with multiple initial conditions, prechar
 
 However, transmission gate topology was shown to have voltage spikes, but differential voltages were smooth, this will be addressed further down in the design document
 <div style="display: flex; align-items: flex-start;">
-   <img src="trans_spike.png" alt="Voltage spike from transmission gate topology" height="300" />
+   <img src="trans_spike.png" alt="Voltage spike from transmission gate topology" height="400" />
 </div> 
 
 Further testing for settling time was done with bitline capcitance sweep, and PVT corner testing.

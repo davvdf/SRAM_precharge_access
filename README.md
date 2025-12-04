@@ -29,8 +29,8 @@ We used Xschem for schematic capture and running simulations with ngspice. To va
 
 We tested 2 different circuit topologies: traditional clocked NMOS and an experimental transmission gate-based topology: 
 <div style="display: flex; align-items: flex-start;">
-   <img src="clocked_nmos_diagram.png" alt="A clocked NMOS precharge circuit" height="175" style="margin-right: 10px; margin-bottom: 10px"/>
-   <img src="transmission_gate_diagram.png" alt="A transmission gate circuit" height="175" />
+   <img src="src/clocked_nmos_diagram.png" alt="A clocked NMOS precharge circuit" height="175" style="margin-right: 10px; margin-bottom: 10px"/>
+   <img src="src/transmission_gate_diagram.png" alt="A transmission gate circuit" height="175" />
 </div>   
 
 The traditional clocked NMOS topology came from the textbook, and the tranmission gate topology was developed through conversations with LLMs.
@@ -52,13 +52,13 @@ As a result, we opted to stick to the clocked NMOS approach with the following p
 Circuit schematics (including testbenches used for spice simulations) can be found in `analog/schematics/`.
 
 <div style="display: flex; align-items: flex-start;">
-   <img src="trad_schem.png" alt="A clocked NMOS precharge circuit" height="300" style="margin-right: 10px; margin-bottom: 10px"/>
-   <img src="transmission_schem.png" alt="A transmission gate circuit" height="300" />
+   <img src="src/trad_schem.png" alt="A clocked NMOS precharge circuit" height="300" style="margin-right: 10px; margin-bottom: 10px"/>
+   <img src="src/transmission_schem.png" alt="A transmission gate circuit" height="300" />
 </div>
 
 Testbench screenshots:
 <div style="display: flex; align-items: flex-start;">
-   <img src="tb.png" alt="Testbench example" height="500" />
+   <img src="src/tb.png" alt="Testbench example" height="500" />
 </div> 
 
 ## Spice Validation
@@ -83,12 +83,12 @@ Spice results can be found in `analog/build/schematic/spice`.
 After initial testing of settling time with multiple initial conditions, precharge and equalization circuitry was determined to be acceptable within given bounds (10mV within 5ns).
 
 <div style="display: flex; align-items: flex-start;">
-   <img src="settling_time.png" alt="Settling time of NMOS vs Transmission gate topologies" height="300" />
+   <img src="src/settling_time.png" alt="Settling time of NMOS vs Transmission gate topologies" height="300" />
 </div> 
 
 However, transmission gate topology was shown to have voltage spikes, but differential voltages were smooth, this will be addressed further down in the design document
 <div style="display: flex; align-items: flex-start;">
-   <img src="trans_spike.png" alt="Voltage spike from transmission gate topology" height="400" />
+   <img src="src/trans_spike.png" alt="Voltage spike from transmission gate topology" height="400" />
 </div> 
 
 Further testing for settling time was done with bitline capcitance sweep, and PVT corner testing.
@@ -114,13 +114,13 @@ Thermal noise testing was also run with:
 .noise v(BL) V4 dec 10 1 66MEG 
 ```
 <div style="display: flex; align-items: flex-start;">
-   <img src="thermal.png" alt="Thermal noise results in Volts" height="300" />
+   <img src="src/thermal.png" alt="Thermal noise results in Volts" height="300" />
 </div> 
 After determining the design of the isolated circuitry was acceptable, testing was moved on to integration testing with bitcells, along with Monte Carlo Analysis to determine stability. Here is where the transmission gate topology failed, it was not stable in the worst case corner (ff_mm) which resulted in a destructive read. A passing run is where a read operation does not flip the SRAM inverters.
 
 <div style="display: flex; align-items: flex-start;">
-   <img src="passing.png" alt="Passing run" height="225" style="margin-right: 10px; margin-bottom: 10px"/>
-   <img src="failing.png" alt="A transmission gate circuit" height="225" />
+   <img src="src/passing.png" alt="Passing run" height="225" style="margin-right: 10px; margin-bottom: 10px"/>
+   <img src="src/failing.png" alt="A transmission gate circuit" height="225" />
 </div> 
 
 ### Power Draw
@@ -128,7 +128,7 @@ After determining the design of the isolated circuitry was acceptable, testing w
 Power is plotted against time during operation, clearly static power draw is negligible, and power spikes to around 50 uW when reading and 250 uW in the worst case differential (0 and 1V8).
 
 <div style="display: flex; align-items: flex-start;">
-   <img src="power_draw.png" alt="Power Draw over Time" height="300" />
+   <img src="src/power_draw.png" alt="Power Draw over Time" height="300" />
 </div> 
 
 ### Assumptions and Next Steps
@@ -145,7 +145,7 @@ Flattened schematics were used for easier simulation to probe voltages, but shou
 
 ## Layout
 <div style="display: flex; align-items: flex-start;">
-   <img src="SRAM_precharge.png" alt="Precharge Layout" height="600" style="margin-right: 20; margin-bottom: 10"/>
+   <img src="src/SRAM_precharge.png" alt="Precharge Layout" height="600" style="margin-right: 20; margin-bottom: 10"/>
    <div>
    <p>
    The layout uses 3 SKY130 NFET transistors: 1 10μm x 0.15μm and 2 5μm x 0.15μm mosfets. These device sizes were chosen through testing and simulations done in ngspice to determine optimal widths/lengths. The footprint of the circuit is 6.310μm x 12.100μm (76.351 μm²).  

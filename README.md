@@ -33,7 +33,7 @@ We tested 2 different circuit topologies: traditional clocked NMOS and an experi
    <img src="transmission_gate_diagram.png" alt="A transmission gate circuit" height="175" />
 </div>   
 
-The traditional clocked NMOS topology came from the textbook, and the tranmission gate topology was developed through conversations with LLMs.
+The traditional clocked NMOS topology came from the Sedra & Smith Microelectronic Circuits textbook, and the tranmission gate topology was developed through conversations with LLMs.
 
 For the transmission gate circuit, complementary gates were sized 3 μm for PFET and 2 μm for NFET to account for mobility differences between each FET, per device physics. This enabled symmetrical pulling up and down of the bitlines relative to Vdd/2.  
 

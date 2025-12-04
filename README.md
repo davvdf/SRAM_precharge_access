@@ -18,9 +18,7 @@ This project's goal is to design and implement the precharge circuitry needed fo
 
 This project borrows heavily from the UW ASIC design team workflow. We opted for this approach as it was already in use and tested thoroughly. The design utilized the SkyWater SKY130 PDK, an open-source process design kit that provides device models, standard cell libraries, and layout design rules.  
 
-We used Xschem for schematic capture and running simulations with ngspice.
-
-To validate our design, we used ngspice to perform transient and DC simulations. For physical layout, we used Magic VLSI to convert our schematics into a manufacturable layout. 
+We used Xschem for schematic capture and running simulations with ngspice. To validate our design, we used ngspice to perform transient and DC simulations. For physical layout, we used Magic VLSI to convert our schematics into a manufacturable layout. 
 
 
 ## Circuit Design
@@ -32,6 +30,7 @@ For transmission gate, complementary gates were sized 3 um for PFET and 2 um for
 Problems: voltage spike due to charge injection, however differential values do not fluctuate
 
 Testing showed that the equalization transistor in the middle determined speed, and precharge transistors determined circuit behaviour with bitcell
+
 ## Spice Validation
 
 Ran speed checks
@@ -47,7 +46,7 @@ Transmission gate was tested, but classical method was favoured over simplicity,
    <img src="SRAM_precharge.png" alt="Precharge Layout" height="600" style="margin-right: 20; margin-bottom: 10"/>
    <div>
    <p>
-   The layout uses 3 SKY130 NFET transistors: 1 10μm x 0.15μm and 2 5μm x 0.15μm mosfets. These device sizes were chosen through testing and simulations done in ngspice to determine optimal lengths that would ///. The footprint of the circuit is 6.310μm x 12.100μm (76.351 μm²).  
+   The layout uses 3 SKY130 NFET transistors: 1 10μm x 0.15μm and 2 5μm x 0.15μm mosfets. These device sizes were chosen through testing and simulations done in ngspice to determine optimal widths/lengths. The footprint of the circuit is 6.310μm x 12.100μm (76.351 μm²).  
    
    To ensure that the layout would be manufacturable and avoid fabrication errors, we verified it using Design Rule Checks (DRC). This step ensures that all drawn geometries satisfy the SKY130 process constraints, such as minimum spacing and contact overlaps. 
 
@@ -68,6 +67,18 @@ Transmission gate was tested, but classical method was favoured over simplicity,
 The magic files, along with GDS and generated Spice files can be found in the `/analog/layout folder`.
 
 ## Post-Silicon Validation
+
+We plan on adopting the following approach to validating our circuit once it has been manufactured on a chip:
+- connect CLK input to a function generator (set to square waves at 66 MHz ranging from 0 - 1.8 V)
+- connect BL and BL_N to oscilloscope and confirm that they get set to their expected voltages
+
+We can then measure the following based on the oscilloscope output:
+- **noise margins** - measure any noise or deviation from expected voltage values (not sure if oscilloscope has tight enough tolerances)
+- **speed checks** - time required for bit lines to reach their expected voltages
+- **charge injection** - look for voltages spikes at the bit lines when CLK switches off
+- **PVT corners** - Process corner is fixed and temperature will be hard to alter, but we can range our voltage to determine our worst case switching speed
+
+The biggest challenge will be designing an interface between peripherals (function generator, oscilloscope) and the chip, as we need to be able to hook up peripherals to elements that are in the micrometer range. Furthermore, we run the risk of introducing large parasitics into the testbench circuit which may be hard to distinguish from actual design flaws.
 
 ## Resources
 

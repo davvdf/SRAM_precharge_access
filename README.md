@@ -49,8 +49,6 @@ Circuit schematics (including testbenches used for spice simulations) can be fou
 
 We ran the following simulations/tests to determine design parameter values and validate circuit functionality:
 
-## Summary: Non-Functional Test Suite
-
 | Test Type          | What It Checks              | Acceptance Criteria          |
 |--------------------|-----------------------------|------------------------------|
 | Monte Carlo        | Manufacturing variation     | 99.7% yield within timing    |

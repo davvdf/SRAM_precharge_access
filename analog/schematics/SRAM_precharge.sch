@@ -1,5 +1,4 @@
-v {xschem version=3.4.4 file_version=1.2
-}
+v {xschem version=3.4.7 file_version=1.2}
 G {}
 K {}
 V {}
@@ -42,7 +41,7 @@ lab=GND}
 N 100 -100 100 -80 {
 lab=GND}
 C {sky130_fd_pr/nfet_01v8.sym} 40 0 0 0 {name=M1
-W=10
+W=5
 L=0.15
 nf=1 
 mult=1
@@ -56,7 +55,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} -40 0 0 1 {name=M2
-W=10
+W=5
 L=0.15
 nf=1 
 mult=1

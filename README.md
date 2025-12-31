@@ -24,7 +24,7 @@ This project borrows heavily from the UW ASIC design team workflow. We opted for
 
 We used Xschem for schematic capture and running simulations with ngspice. To validate our design, we used ngspice to perform transient and DC simulations. For physical layout, we used Magic VLSI to convert our schematics into a manufacturable layout. 
 
-To enter dev environment, install nix and run ```nix-shell``` command
+To enter dev environment, install nix and run ```nix-shell``` command, and look to ```UW ASIC README.md``` file for more info.
 
 
 ## Circuit Design
